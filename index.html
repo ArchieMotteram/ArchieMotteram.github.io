@@ -8,10 +8,18 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
+
+/* =========================
+JAZZ BAR THEME
+========================= */
+
 body{
   margin:0;
   font-family:Arial;
-  background:#0b0f14;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,140,60,0.12), transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(255,180,90,0.08), transparent 50%),
+    linear-gradient(180deg,#070a0f,#0e141d);
   color:#f4efe9;
 }
 
@@ -19,31 +27,36 @@ body{
 nav{
   position:fixed;
   top:0;
-  width:100%;
-  background:#0d131c;
-  padding:12px;
+  left:0;
+  right:0;
+  background:rgba(10,15,20,0.85);
+  backdrop-filter: blur(12px);
+  padding:14px;
   display:flex;
-  gap:15px;
+  gap:18px;
+  border-bottom:1px solid rgba(255,138,42,0.2);
   z-index:100;
 }
 
 nav a{
   color:#b9b2a8;
   text-decoration:none;
+  font-size:14px;
+  transition:0.3s;
   cursor:pointer;
 }
 
-nav a.active{
+nav a:hover{
   color:#ff8a2a;
 }
 
-/* PAGE SYSTEM (SAFE VERSION) */
+/* PAGE SYSTEM */
 .page{
   display:none;
-  padding:90px 20px;
-  max-width:900px;
+  padding:100px 20px 60px;
+  max-width:1000px;
   margin:auto;
-  animation:fade 0.4s ease;
+  animation:fade 0.6s ease;
 }
 
 .page.active{
@@ -51,134 +64,269 @@ nav a.active{
 }
 
 @keyframes fade{
-  from{opacity:0; transform:translateY(10px);}
+  from{opacity:0; transform:translateY(12px);}
   to{opacity:1; transform:translateY(0);}
 }
 
+/* WINDOWS */
 .window{
-  background:#121a26;
-  padding:25px;
-  border-radius:12px;
-  margin-bottom:20px;
-  border:1px solid rgba(255,138,42,0.2);
+  background:linear-gradient(145deg,#121a26,#0f1622);
+  border:1px solid rgba(255,138,42,0.15);
+  padding:26px;
+  border-radius:16px;
+  margin-bottom:22px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.35);
 }
 
-h1,h2{color:#ff8a2a}
-p{color:#b9b2a8; line-height:1.7}
+h1,h2{
+  color:#ff8a2a;
+  margin-top:0;
+}
 
-.chartBox{
+p{
+  color:#c7c0b6;
+  line-height:1.8;
+}
+
+/* GRID CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+
+.card{
   background:#0f1622;
-  padding:15px;
-  border-radius:10px;
+  padding:18px;
+  border-radius:12px;
+  border:1px solid rgba(255,138,42,0.12);
+}
+
+.card h3{
+  color:#ffb15e;
+}
+
+/* CHART BOX */
+.chartBox{
+  background:#0c121c;
+  padding:16px;
+  border-radius:12px;
   margin-top:15px;
 }
+
+/* SMALL TEXT */
+.small{
+  color:#b9b2a8;
+}
+
+/* SCENE TRANSITION FEEL */
+.page{
+  transition:opacity 0.4s ease;
+}
+
 </style>
 </head>
 
 <body>
 
 <nav>
-<a class="nav" onclick="go('thesis')">Thesis</a>
-<a class="nav" onclick="go('channels')">Channels</a>
-<a class="nav" onclick="go('industries')">Industries</a>
-<a class="nav" onclick="go('scenarios')">Scenarios</a>
+<a onclick="go('thesis')">Thesis</a>
+<a onclick="go('gpt')">GPT Role</a>
+<a onclick="go('channels')">Economic Channels</a>
+<a onclick="go('industries')">Industries</a>
+<a onclick="go('scenarios')">Scenarios</a>
 </nav>
 
-<!-- PAGE 1 -->
+<!-- ================= THESIS ================= -->
 <div id="thesis" class="page active">
+
 <div class="window">
-<h1>AI & Australian Economy</h1>
+<h1>AI & the Australian Economy</h1>
 
 <p>
-AI will reshape Australia’s economy primarily through task automation and augmentation rather than full job replacement.
+By 2030, artificial intelligence will reshape Australia’s economy primarily through task transformation rather than full job replacement.
+It reduces the cost of cognitive labour across a service-based economy.
 </p>
 
 <p>
-The key issue is productivity growth, which has been weak for over a decade.
+Australia’s productivity growth has been weak for years. AI presents a potential uplift through automation, augmentation, and workflow redesign.
 </p>
-</div>
+
+<p>
+However, the benefits will be uneven — concentrated in high-skill workers and large firms unless diffusion is broad.
+</p>
+
 </div>
 
-<!-- PAGE 2 -->
+<div class="window">
+<h2>Key Insight</h2>
+<p class="small">
+AI is not a labour replacement shock — it is a productivity reconfiguration shock.
+</p>
+</div>
+
+</div>
+
+<!-- ================= GPT ================= -->
+<div id="gpt" class="page">
+
+<div class="window">
+<h2>AI as a General-Purpose Technology</h2>
+
+<p>
+AI behaves like electricity or computing — a general-purpose technology that spreads across industries and improves over time.
+</p>
+
+<p>
+Its economic impact depends on complementary changes: training, workflow redesign, and organisational adoption.
+</p>
+
+<p>
+In service economies like Australia, AI reduces the cost of information-heavy work: law, finance, healthcare, education, and government.
+</p>
+
+</div>
+
+<div class="window">
+<h2>Why It Matters</h2>
+<p class="small">
+Historical GPTs only deliver productivity gains when firms reorganise around them — not when they are merely adopted.
+</p>
+</div>
+
+</div>
+
+<!-- ================= CHANNELS ================= -->
 <div id="channels" class="page">
+
 <div class="window">
 <h2>Economic Channels</h2>
-<p>AI increases productivity, supports labour, and lowers innovation costs.</p>
+
+<p>
+AI affects the economy through multiple reinforcing mechanisms:
+productivity, augmentation, innovation, and concentration effects.
+</p>
 
 <div class="chartBox">
-<canvas id="c1"></canvas>
-</div>
-</div>
+<canvas id="chart1"></canvas>
 </div>
 
-<!-- PAGE 3 -->
+</div>
+
+</div>
+
+<!-- ================= INDUSTRIES ================= -->
 <div id="industries" class="page">
+
 <div class="window">
 <h2>Industry Impacts</h2>
-<p>Finance, healthcare, and professional services are most exposed.</p>
+
+<p>
+Different sectors face different exposure depending on how information-intensive their work is.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>Professional Services</h3>
+<p class="small">High exposure due to drafting, analysis, and research automation.</p>
+</div>
+
+<div class="card">
+<h3>Healthcare</h3>
+<p class="small">Augmentation of clinicians through diagnostics + admin support.</p>
+</div>
+
+<div class="card">
+<h3>Education</h3>
+<p class="small">Efficiency gains but unequal student access risks.</p>
+</div>
+
+<div class="card">
+<h3>Finance & Government</h3>
+<p class="small">Automation of compliance, forecasting, and service delivery.</p>
+</div>
+
+</div>
 
 <div class="chartBox">
-<canvas id="c2"></canvas>
-</div>
-</div>
+<canvas id="chart2"></canvas>
 </div>
 
-<!-- PAGE 4 -->
+</div>
+
+</div>
+
+<!-- ================= SCENARIOS ================= -->
 <div id="scenarios" class="page">
+
 <div class="window">
-<h2>Scenarios</h2>
-<p id="txt">Baseline: moderate productivity gains.</p>
+<h2>2030 Scenario Forecast</h2>
+
+<p id="scenarioText">
+Baseline scenario: moderate productivity growth with uneven distribution.
+</p>
 
 <div class="chartBox">
-<canvas id="c3"></canvas>
+<canvas id="chart3"></canvas>
 </div>
+
 </div>
+
 </div>
 
 <script>
 
-/* NAV SYSTEM */
-function go(id){
+/* ======================
+PAGE SWITCH (SMOOTH SPA)
+====================== */
+function go(page){
 
 document.querySelectorAll(".page").forEach(p=>{
 p.classList.remove("active");
 });
 
-document.getElementById(id).classList.add("active");
+document.getElementById(page).classList.add("active");
 
 }
 
-/* CHART 1 */
-new Chart(document.getElementById("c1"),{
+/* ======================
+CHART 1 - ECONOMIC CHANNELS
+====================== */
+new Chart(document.getElementById("chart1"),{
 type:"bar",
 data:{
-labels:["Productivity","Augmentation","Innovation"],
+labels:["Productivity","Augmentation","Innovation","Concentration"],
 datasets:[{
-data:[80,75,70],
+data:[85,80,75,70],
 backgroundColor:"#ff8a2a"
 }]
 }
 });
 
-/* CHART 2 */
-new Chart(document.getElementById("c2"),{
+/* ======================
+CHART 2 - INDUSTRIES
+====================== */
+new Chart(document.getElementById("chart2"),{
 type:"bar",
 data:{
-labels:["Finance","Health","Education","Gov"],
+labels:["Prof Services","Finance","Healthcare","Education","Gov"],
 datasets:[{
-data:[85,75,60,70],
+data:[90,85,75,60,70],
 backgroundColor:"#ff8a2a"
 }]
 }
 });
 
-/* CHART 3 */
-new Chart(document.getElementById("c3"),{
+/* ======================
+CHART 3 - SCENARIOS
+====================== */
+new Chart(document.getElementById("chart3"),{
 type:"line",
 data:{
 labels:["2024","2025","2026","2027","2028","2029","2030"],
 datasets:[{
-data:[1,1.2,1.4,1.6,1.9,2.2,2.5],
+data:[1,1.2,1.4,1.7,2.0,2.3,2.6],
 borderColor:"#ff8a2a",
 tension:0.3
 }]
