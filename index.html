@@ -1,41 +1,305 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & Australian Economy Report</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(180deg,#070a0f,#0e141d);
+  color:#f4efe9;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  background:#0d131c;
+  padding:14px;
+  display:flex;
+  gap:18px;
+  border-bottom:1px solid rgba(255,138,42,0.2);
+  z-index:100;
+}
+
+nav a{
+  color:#b9b2a8;
+  text-decoration:none;
+  font-size:14px;
+  transition:0.3s;
+}
+
+nav a.active{
+  color:#ff8a2a;
+}
+
+/* PAGES (SPA SECTIONS) */
+.page{
+  position:absolute;
+  top:60px;
+  left:0;
+  right:0;
+  padding:80px 20px 60px;
+  max-width:1000px;
+  margin:auto;
+
+  opacity:0;
+  transform:translateY(20px);
+  pointer-events:none;
+
+  transition:all 0.5s ease;
+}
+
+.page.active{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+/* WINDOWS */
+.window{
+  background:#121a26;
+  padding:30px;
+  border-radius:14px;
+  border:1px solid rgba(255,138,42,0.15);
+  margin-bottom:25px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.3);
+}
+
+h1,h2{color:#ff8a2a}
+
+p{
+  color:#b9b2a8;
+  line-height:1.8;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:15px;
+}
+
+.card{
+  background:#0f1622;
+  padding:18px;
+  border-radius:12px;
+  border:1px solid rgba(255,138,42,0.1);
+}
+
+.card h3{color:#ffb15e}
+
+/* CHART */
+.chartBox{
+  margin-top:20px;
+  background:#0f1622;
+  padding:15px;
+  border-radius:12px;
+}
+
+/* FADE ANIMATION HELPERS */
+.fade-in{
+  animation:fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
 </head>
 
 <body>
 
 <nav>
-<a href="index.html">Thesis</a>
-<a href="gpt.html">AI as GPT</a>
-<a href="channels.html">Channels</a>
-<a href="industries.html">Industries</a>
-<a href="scenarios.html">Scenarios</a>
-<a href="policy.html">Policy</a>
+<a href="#" class="navlink active" onclick="go('thesis')">Thesis</a>
+<a href="#" class="navlink" onclick="go('gpt')">AI as GPT</a>
+<a href="#" class="navlink" onclick="go('channels')">Channels</a>
+<a href="#" class="navlink" onclick="go('industries')">Industries</a>
+<a href="#" class="navlink" onclick="go('scenarios')">Scenarios</a>
 </nav>
 
-<div class="container">
-
-<div class="window">
-<h1>AI & Australian Economy</h1>
+<!-- PAGE 1 -->
+<div id="thesis" class="page active">
+<div class="window fade-in">
+<h1>AI & the Australian Economy</h1>
 
 <p>
-By 2030, artificial intelligence will become one of the most important economic technologies in Australia.
-Its primary effect is not full automation, but task-level transformation of work.
+By 2030, artificial intelligence will become one of the most important economic technologies in Australia since the internet.
+Its primary impact is task transformation, not full job replacement.
 </p>
 
 <p>
-Australia’s key constraint is weak productivity growth. AI may reverse this trend by lowering the cost of cognitive labour in a service-based economy.
+Australia’s productivity growth has been weak for years.
+AI offers a potential shift by reducing the cost of cognitive labour in a service-based economy.
 </p>
 
 <p>
-However, the gains are likely to be uneven. High-skill workers and large firms benefit most due to complementary capital, data, and organisational capacity.
+However, benefits will be uneven: high-skill workers and large firms are likely to gain the most.
 </p>
 
 </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="gpt" class="page">
+<div class="window fade-in">
+<h2>AI as a General-Purpose Technology</h2>
+
+<p>
+AI is a general-purpose technology (GPT) because it spreads across many sectors and requires complementary organisational change.
+</p>
+
+<p>
+Like electricity and computing, its biggest productivity effects only appear when firms restructure workflows around it.
+</p>
+
+<p>
+In Australia’s service economy, AI is especially powerful because it reduces the cost of information processing across law, finance, healthcare, and education.
+</p>
 
 </div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="channels" class="page">
+<div class="window fade-in">
+<h2>Economic Channels</h2>
+
+<p>
+AI affects the economy through productivity gains, labour augmentation, innovation, and market concentration.
+</p>
+
+<div class="chartBox">
+<canvas id="chart1"></canvas>
+</div>
+
+</div>
+</div>
+
+<!-- PAGE 4 -->
+<div id="industries" class="page">
+<div class="window fade-in">
+<h2>Industry Impacts</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Professional Services</h3>
+<p>High exposure from drafting, analysis, and research automation.</p>
+</div>
+
+<div class="card">
+<h3>Healthcare</h3>
+<p>AI augments clinicians through diagnostics and administration.</p>
+</div>
+
+<div class="card">
+<h3>Education</h3>
+<p>Improves teaching efficiency but may widen inequality.</p>
+</div>
+
+<div class="card">
+<h3>Public Sector & Finance</h3>
+<p>Automation of compliance, forecasting, and service systems.</p>
+</div>
+
+</div>
+
+<div class="chartBox">
+<canvas id="chart2"></canvas>
+</div>
+
+</div>
+</div>
+
+<!-- PAGE 5 -->
+<div id="scenarios" class="page">
+<div class="window fade-in">
+<h2>Scenario Forecast (2030)</h2>
+
+<p id="scenarioText">
+Baseline: moderate productivity growth with uneven distribution.
+</p>
+
+<div class="chartBox">
+<canvas id="chart3"></canvas>
+</div>
+
+</div>
+</div>
+
+<script>
+
+/* ======================
+PAGE SWITCH (SMOOTH SPA)
+====================== */
+function go(page){
+
+document.querySelectorAll(".page").forEach(p=>{
+p.classList.remove("active");
+});
+
+document.getElementById(page).classList.add("active");
+
+/* nav highlight */
+document.querySelectorAll(".navlink").forEach(a=>{
+a.classList.remove("active");
+if(a.textContent.toLowerCase().includes(page)){
+a.classList.add("active");
+}
+});
+}
+
+/* ======================
+CHARTS (PERSISTENT)
+====================== */
+const chart1 = new Chart(document.getElementById("chart1"),{
+type:"bar",
+data:{
+labels:["Productivity","Augmentation","Innovation","Concentration"],
+datasets:[{
+label:"Impact Strength",
+data:[85,80,75,70],
+backgroundColor:"#ff8a2a"
+}]
+}
+});
+
+const chart2 = new Chart(document.getElementById("chart2"),{
+type:"bar",
+data:{
+labels:["Prof Services","Finance","Healthcare","Education","Gov"],
+datasets:[{
+label:"AI Exposure",
+data:[90,85,75,60,70],
+backgroundColor:"#ff8a2a"
+}]
+}
+});
+
+const chart3 = new Chart(document.getElementById("chart3"),{
+type:"line",
+data:{
+labels:["2024","2025","2026","2027","2028","2029","2030"],
+datasets:[{
+label:"Productivity Growth",
+data:[1,1.2,1.4,1.7,2.0,2.3,2.6],
+borderColor:"#ff8a2a",
+tension:0.3
+}]
+}
+});
+
+</script>
 
 </body>
 </html>
