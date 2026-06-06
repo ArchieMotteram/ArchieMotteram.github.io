@@ -4,21 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AI and the Australian Economy</title>
-<script src="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/chart.js)"></script>
 <style>
 :root{
-  --bg:#08090c;
-  --bg2:#11131a;
-  --panel:#18131a;
-  --panel2:#201922;
-  --soft:#2a2230;
-  --gold:#d8a45c;
-  --gold2:#f2c27b;
-  --cream:#f6efe4;
-  --muted:#c8b8a4;
-  --muted2:#a89682;
-  --line:rgba(242,194,123,0.16);
-  --shadow:0 18px 50px rgba(0,0,0,0.45);
+  --bg:#0b0d12;
+  --bg2:#131720;
+  --panel:#171c26;
+  --panel2:#1d2330;
+  --accent:#7fb3ff;
+  --accent2:#a8cbff;
+  --accent3:#5d89d6;
+  --text:#eef3fb;
+  --muted:#c4cfde;
+  --muted2:#97a6bb;
+  --line:rgba(255,255,255,0.08);
+  --shadow:0 16px 40px rgba(0,0,0,0.28);
 }
 
 *{
@@ -31,13 +30,12 @@ html{
 
 body{
   margin:0;
-  font-family: Georgia, "Times New Roman", serif;
-  color:var(--cream);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color:var(--text);
   background:
-    radial-gradient(circle at 15% 10%, rgba(216,164,92,0.10), transparent 28%),
-    radial-gradient(circle at 85% 12%, rgba(120,65,30,0.10), transparent 22%),
-    radial-gradient(circle at 50% 100%, rgba(216,164,92,0.05), transparent 30%),
-    linear-gradient(180deg, #06070a 0%, #0b0d11 30%, #11131a 100%);
+    radial-gradient(circle at 10% 10%, rgba(127,179,255,0.10), transparent 22%),
+    radial-gradient(circle at 90% 15%, rgba(93,137,214,0.08), transparent 18%),
+    linear-gradient(180deg, #090b10 0%, #10141c 45%, #141a24 100%);
   min-height:100vh;
 }
 
@@ -45,14 +43,13 @@ body{
   position:sticky;
   top:0;
   z-index:1000;
-  backdrop-filter:blur(16px);
-  background:rgba(10,10,14,0.88);
+  backdrop-filter:blur(14px);
+  background:rgba(10,14,20,0.88);
   border-bottom:1px solid var(--line);
-  box-shadow:0 8px 28px rgba(0,0,0,0.25);
 }
 
 .topbar-inner{
-  max-width:1400px;
+  max-width:1380px;
   margin:0 auto;
   padding:16px 22px;
   display:flex;
@@ -64,76 +61,71 @@ body{
 .brand{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:12px;
 }
 
 .brand-mark{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:1px solid rgba(242,194,123,0.28);
-  background:
-    radial-gradient(circle at 35% 35%, rgba(242,194,123,0.35), rgba(90,52,30,0.08) 60%, transparent 62%),
-    linear-gradient(145deg,#1c1513,#0d0e13);
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:linear-gradient(135deg, var(--accent), var(--accent3));
+  box-shadow:0 8px 20px rgba(127,179,255,0.18);
 }
 
 .brand-text h1{
-  font-size:1rem;
   margin:0;
-  letter-spacing:0.08em;
+  font-size:1rem;
+  letter-spacing:0.05em;
   text-transform:uppercase;
-  color:var(--gold2);
-  font-family: Arial, Helvetica, sans-serif;
+  color:var(--accent2);
 }
 
 .brand-text p{
   margin:3px 0 0;
   color:var(--muted2);
   font-size:0.82rem;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .nav{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
-  justify-content:flex-end;
 }
 
 .nav button{
   border:none;
+  background:linear-gradient(180deg, #1b2230, #151b26);
   color:var(--muted);
-  background:linear-gradient(145deg, rgba(34,26,24,0.95), rgba(18,18,24,0.95));
-  border:1px solid rgba(242,194,123,0.12);
+  border:1px solid rgba(255,255,255,0.08);
   padding:11px 16px;
   border-radius:999px;
   cursor:pointer;
+  transition:0.22s ease;
   font-size:0.92rem;
-  transition:all 0.25s ease;
 }
 
 .nav button:hover{
-  color:var(--gold2);
+  color:var(--text);
+  border-color:rgba(127,179,255,0.28);
   transform:translateY(-1px);
-  border-color:rgba(242,194,123,0.26);
 }
 
 .nav button.active{
-  color:#140f08;
-  background:linear-gradient(145deg, var(--gold2), var(--gold));
-  border-color:rgba(242,194,123,0.5);
-  box-shadow:0 8px 24px rgba(216,164,92,0.22);
+  color:#08111f;
+  background:linear-gradient(180deg, var(--accent2), var(--accent));
+  border-color:transparent;
+  font-weight:700;
 }
 
 .container{
-  max-width:1400px;
+  max-width:1380px;
   margin:0 auto;
   padding:28px 22px 50px;
 }
 
 .page{
   display:none;
-  animation:fadeUp 0.45s ease;
+  animation:fadeUp 0.35s ease;
 }
 
 .page.active{
@@ -141,99 +133,15 @@ body{
 }
 
 @keyframes fadeUp{
-  from{opacity:0; transform:translateY(12px);}
+  from{opacity:0; transform:translateY(10px);}
   to{opacity:1; transform:translateY(0);}
 }
 
 .hero{
   display:grid;
-  grid-template-columns:1.4fr 0.8fr;
+  grid-template-columns:1.35fr 0.85fr;
   gap:22px;
   margin-bottom:22px;
-}
-
-.panel{
-  background:linear-gradient(160deg, rgba(31,24,28,0.96), rgba(18,18,24,0.96));
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:28px;
-  box-shadow:var(--shadow);
-  position:relative;
-  overflow:hidden;
-}
-
-.kpi-grid,
-.card-grid{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:18px;
-}
-
-.card-grid.two{
-  grid-template-columns:repeat(2, 1fr);
-}
-
-.kpi{
-  background:linear-gradient(160deg, rgba(28,22,26,0.95), rgba(14,15,20,0.95));
-  border:1px solid rgba(242,194,123,0.12);
-  border-radius:18px;
-  padding:18px;
-  min-height:128px;
-}
-
-.kpi .label{
-  font-size:0.8rem;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
-  color:var(--muted2);
-  font-family:Arial, Helvetica, sans-serif;
-}
-
-.kpi .value{
-  font-size:2rem;
-  color:var(--gold2);
-  margin:10px 0 8px;
-  font-family:Arial, Helvetica, sans-serif;
-}
-
-.kpi .desc{
-  margin:0;
-  color:var(--muted);
-  line-height:1.55;
-  font-size:0.95rem;
-}
-
-h2{
-  margin:0 0 14px;
-  font-size:2rem;
-  color:var(--gold2);
-  font-weight:600;
-}
-
-h3{
-  margin:0 0 10px;
-  color:var(--gold2);
-  font-size:1.18rem;
-}
-
-.lead{
-  font-size:1.08rem;
-  line-height:1.85;
-  color:#eadfce;
-}
-
-p{
-  color:var(--muted);
-  line-height:1.82;
-  margin:0 0 14px;
-  font-size:1rem;
-}
-
-ul{
-  margin:0;
-  padding-left:20px;
-  color:var(--muted);
-  line-height:1.8;
 }
 
 .section-grid{
@@ -243,54 +151,129 @@ ul{
   margin-bottom:22px;
 }
 
-.mini-note{
-  margin-top:12px;
-  color:var(--muted2);
-  font-size:0.92rem;
-  line-height:1.7;
+.panel{
+  background:linear-gradient(180deg, var(--panel), var(--panel2));
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:26px;
+  box-shadow:var(--shadow);
 }
 
-.chart-wrap{
-  margin-top:16px;
-  background:linear-gradient(180deg, rgba(9,11,15,0.9), rgba(15,16,20,0.95));
-  border:1px solid rgba(242,194,123,0.12);
-  border-radius:20px;
+.kpi-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.card-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.kpi, .card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:16px;
   padding:18px;
 }
 
-.chart-wrap h4{
-  margin:0 0 10px;
-  color:var(--cream);
-  font-size:1rem;
-  font-family:Arial, Helvetica, sans-serif;
-  letter-spacing:0.02em;
+.kpi .label{
+  font-size:0.76rem;
+  color:var(--muted2);
+  text-transform:uppercase;
+  letter-spacing:0.07em;
+  margin-bottom:8px;
 }
 
-.chart-wrap canvas{
+.kpi .value{
+  font-size:1.9rem;
+  color:var(--accent2);
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.kpi .desc{
+  color:var(--muted);
+  line-height:1.6;
+  margin:0;
+}
+
+h2{
+  margin:0 0 14px;
+  color:var(--accent2);
+  font-size:1.9rem;
+}
+
+h3{
+  margin:0 0 10px;
+  color:var(--accent2);
+  font-size:1.15rem;
+}
+
+h4{
+  margin:0 0 10px;
+  color:var(--text);
+  font-size:1rem;
+}
+
+p{
+  color:var(--muted);
+  line-height:1.75;
+  margin:0 0 14px;
+}
+
+.lead{
+  color:var(--text);
+  font-size:1.06rem;
+  line-height:1.8;
+}
+
+.quote{
+  border-left:3px solid var(--accent);
+  padding:14px 16px;
+  background:rgba(127,179,255,0.06);
+  border-radius:0 12px 12px 0;
+  color:var(--text);
+  margin-top:10px;
+}
+
+.chart-card{
+  margin-top:16px;
+  background:#101621;
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:18px;
+  padding:16px;
+}
+
+.chart-svg{
+  width:100%;
+  height:auto;
   display:block;
-  width:100% !important;
-  height:320px !important;
+  background:linear-gradient(180deg, #0e141d, #0d1219);
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.05);
 }
 
 .chart-meta{
-  margin:12px 0 0;
+  margin-top:12px;
   color:var(--muted2);
-  font-size:0.92rem;
-  line-height:1.7;
+  line-height:1.65;
+  font-size:0.93rem;
 }
 
 .refs{
   margin-top:12px;
   padding-top:12px;
-  border-top:1px solid rgba(242,194,123,0.12);
+  border-top:1px solid rgba(255,255,255,0.08);
+  color:var(--muted2);
   font-size:0.88rem;
   line-height:1.7;
-  color:var(--muted2);
   word-break:break-word;
 }
 
 .refs a{
-  color:var(--gold2);
+  color:var(--accent2);
   text-decoration:none;
 }
 
@@ -298,11 +281,26 @@ ul{
   text-decoration:underline;
 }
 
-.card{
-  background:linear-gradient(160deg, rgba(24,19,26,0.95), rgba(14,15,20,0.95));
-  border:1px solid rgba(242,194,123,0.12);
-  border-radius:18px;
-  padding:20px;
+.data-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+.data-table th,
+.data-table td{
+  text-align:left;
+  padding:12px 10px;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  color:var(--muted);
+  vertical-align:top;
+}
+
+.data-table th{
+  color:var(--accent2);
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
 }
 
 .scenario-pills{
@@ -318,55 +316,27 @@ ul{
   padding:11px 16px;
   cursor:pointer;
   color:var(--muted);
-  background:linear-gradient(145deg, rgba(36,27,26,0.98), rgba(19,18,24,0.98));
-  border:1px solid rgba(242,194,123,0.15);
-  transition:all 0.25s ease;
+  background:#1a2230;
+  border:1px solid rgba(255,255,255,0.08);
 }
 
 .scenario-pills button.active{
-  color:#140f08;
-  background:linear-gradient(145deg, var(--gold2), var(--gold));
+  color:#08111f;
+  background:linear-gradient(180deg, var(--accent2), var(--accent));
+  font-weight:700;
 }
 
-.data-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:10px;
-  font-size:0.95rem;
-}
-
-.data-table th,
-.data-table td{
-  text-align:left;
-  padding:12px 10px;
-  border-bottom:1px solid rgba(242,194,123,0.1);
+ul{
+  margin:0;
+  padding-left:18px;
   color:var(--muted);
+  line-height:1.8;
 }
 
-.data-table th{
-  color:var(--gold2);
-  font-family:Arial, Helvetica, sans-serif;
-  font-size:0.84rem;
-  text-transform:uppercase;
-  letter-spacing:0.06em;
-}
-
-.quote{
-  border-left:3px solid var(--gold);
-  padding:14px 16px;
-  background:rgba(242,194,123,0.05);
-  border-radius:0 14px 14px 0;
-  color:#eadfce;
-  margin-top:10px;
-}
-
-@media (max-width:1100px){
+@media (max-width:1050px){
   .hero,
-  .section-grid,
-  .kpi-grid,
-  .card-grid,
-  .card-grid.two{
-    grid-template-columns:1fr 1fr;
+  .section-grid{
+    grid-template-columns:1fr;
   }
 }
 
@@ -376,16 +346,8 @@ ul{
     align-items:flex-start;
   }
 
-  .nav{
-    width:100%;
-    justify-content:flex-start;
-  }
-
-  .hero,
-  .section-grid,
   .kpi-grid,
-  .card-grid,
-  .card-grid.two{
+  .card-grid{
     grid-template-columns:1fr;
   }
 
@@ -394,7 +356,7 @@ ul{
   }
 
   .panel{
-    padding:22px;
+    padding:20px;
   }
 }
 </style>
@@ -433,16 +395,16 @@ ul{
           Artificial intelligence is likely to matter for Australia less as a sudden replacement of all labour and more as a broad reorganisation of cognitive work. The strongest economic effect is likely to come through faster drafting, summarising, coding, customer handling, document review, triage, forecasting and decision support. In a service heavy economy, that matters because so much value creation depends on information processing rather than purely physical production.
         </p>
         <p>
-          The economic case is strongest where AI lowers the time cost of routine or semi routine tasks and lifts the output of skilled workers. The distributional risk appears when those gains are captured mainly by large firms, already productive teams, and workers with stronger digital capability. That creates a very Australian policy question: can AI lift weak productivity growth without deepening existing divides between firms, regions and workers?
+          The economic case is strongest where AI lowers the time cost of routine or semi routine tasks and lifts the output of skilled workers. The distributional risk appears when those gains are captured mainly by large firms, already productive teams, and workers with stronger digital capability. That creates a key policy question: can AI lift weak productivity growth without deepening existing divides between firms, regions and workers?
         </p>
         <div class="quote">
-          This website treats AI as a general purpose technology whose gains depend on diffusion, complementary investment, managerial redesign and workforce capability rather than adoption alone.
+          This report treats AI as a general purpose technology whose gains depend on diffusion, complementary investment, managerial redesign and workforce capability rather than adoption alone.
         </div>
       </div>
 
       <div class="panel">
         <h2>Key measurements</h2>
-        <div class="kpi-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="kpi-grid">
           <div class="kpi">
             <div class="label">Australia MFP</div>
             <div class="value">-0.5%</div>
@@ -451,7 +413,7 @@ ul{
           <div class="kpi">
             <div class="label">AI R&D growth</div>
             <div class="value">142%</div>
-            <p class="desc">Australian business AI R&D spending grew from \$276.3m to \$668.3m between 2021 to 22 and 2023 to 24.</p>
+            <p class="desc">Australian business AI R&D spending rose from \$276.3m to \$668.3m between 2021 to 22 and 2023 to 24.</p>
           </div>
           <div class="kpi">
             <div class="label">Enterprise efficiency</div>
@@ -476,22 +438,22 @@ ul{
 
     <div class="section-grid">
       <div class="panel">
-        <h3>What AI has already made better</h3>
+        <h3>What AI has already improved</h3>
         <p>
-          The clearest improvements so far are in speed, administrative efficiency and task support. Firms report faster processing of documents, shorter turnaround times for internal knowledge work, better drafting, easier search across internal material, and lower time spent on repetitive business tasks. These are not abstract gains. They show up as time saved on real workflows, which is why productivity studies often measure output per hour or task completion improvements rather than only revenue.
+          The clearest improvements so far are in speed, administrative efficiency and task support. Firms report faster processing of documents, shorter turnaround times for internal knowledge work, better drafting, easier search across internal material, and lower time spent on repetitive business tasks. These effects matter because productivity gains usually appear first as time saved inside workflows before they show up more broadly in national statistics.
         </p>
         <p>
-          In Australia, firm behaviour suggests businesses see AI as more than a passing tool. Business R&D spending on AI more than doubled across a short period. That matters because R&D spending is a revealed preference measure. Firms put money where they expect future returns, capability building and competitive advantage.
+          In Australia, firm behaviour suggests businesses see AI as more than a passing tool. Business R&D spending on AI more than doubled across a short period. That matters because R&D spending is a revealed preference measure. Firms invest where they expect future returns, capability building and competitive advantage.
         </p>
       </div>
 
       <div class="panel">
-        <h3>Why this matters for the argument</h3>
+        <h3>How to read this site</h3>
         <p>
-          The argument about augmentation over pure replacement fits the measured evidence well. The strongest current empirical results come from settings where AI helps workers complete business style tasks more quickly or narrows capability gaps by giving less experienced workers better scaffolding. That does not mean inequality disappears. It means the outcome depends on who gets access, who receives training, and which firms can reorganise work around the tool.
+          This website combines observed measurements with scenario modelling. Where official numbers exist, they are shown directly. Where the future is uncertain, the report uses clearly labelled modelled indices so the logic stays transparent. That makes the site more defensible academically and easier to explain in an assessment.
         </p>
         <p>
-          For that reason, the charts below use measured values where possible and labelled scenario values where the future is uncertain. The site distinguishes between observed evidence and forecast modelling.
+          The central idea across all pages is that AI is most likely to reshape tasks, management systems and productivity pathways rather than simply remove whole occupations at once.
         </p>
       </div>
     </div>
@@ -502,17 +464,38 @@ ul{
       <div class="panel">
         <h2>Productivity and performance</h2>
         <p>
-          Australia has a productivity problem that predates the AI boom. The latest Productivity Commission bulletin reports that multifactor productivity fell by 0.5% in 2024 to 25. That is below the 20 year average annual growth rate of 0.4% and far below the 1.6% average annual increase recorded between 1994 to 95 and 2003 to 04. This creates the background condition for the whole report: AI is attractive because the economy has been struggling to generate stronger productivity growth through existing channels.
+          Australia has a productivity problem that predates the current AI wave. The Productivity Commission reports that multifactor productivity fell by 0.5% in 2024 to 25. That is below the 20 year average annual growth rate of 0.4% and far below the 1.6% average annual increase recorded between 1994 to 95 and 2003 to 04.
         </p>
         <p>
-          At the same time, the same bulletin notes that workers in the most productive countries are about 12% more productive with the same amount of capital. That implies an efficiency gap, not just a spending gap. The issue is how capital, data, management and technology are combined inside firms.
+          This is why AI matters economically. It arrives at a time when Australia needs stronger productivity growth but has struggled to generate it consistently through existing channels. If AI improves business processes, knowledge work and organisational efficiency, it could help lift output per worker. If adoption stays shallow, the gains remain limited.
         </p>
 
-        <div class="chart-wrap">
-          <h4>Chart 1. Australian productivity context and AI related business response</h4>
-          <canvas id="chartProductivity"></canvas>
+        <div class="chart-card">
+          <h4>Chart 1. Productivity context and AI investment growth</h4>
+          <svg class="chart-svg" viewBox="0 0 720 360" aria-label="Bar chart showing productivity and AI investment measurements">
+            <rect x="0" y="0" width="720" height="360" fill="transparent"/>
+            <line x1="70" y1="40" x2="70" y2="300" stroke="#6f7f96" stroke-width="1"/>
+            <line x1="70" y1="300" x2="670" y2="300" stroke="#6f7f96" stroke-width="1"/>
+            <line x1="70" y1="220" x2="670" y2="220" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <line x1="70" y1="140" x2="670" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+            <rect x="120" y="300" width="70" height="8" fill="#d46a6a"/>
+            <rect x="250" y="288" width="70" height="12" fill="#7fb3ff"/>
+            <rect x="380" y="252" width="70" height="48" fill="#a8cbff"/>
+            <rect x="510" y="55" width="70" height="245" fill="#5d89d6"/>
+
+            <text x="104" y="326" fill="#c4cfde" font-size="13">MFP</text>
+            <text x="233" y="326" fill="#c4cfde" font-size="13">20yr avg</text>
+            <text x="340" y="326" fill="#c4cfde" font-size="13">1994 to 04</text>
+            <text x="492" y="326" fill="#c4cfde" font-size="13">AI R&amp;D</text>
+
+            <text x="120" y="285" fill="#eef3fb" font-size="13">-0.5%</text>
+            <text x="250" y="278" fill="#eef3fb" font-size="13">0.4%</text>
+            <text x="380" y="242" fill="#eef3fb" font-size="13">1.6%</text>
+            <text x="510" y="45" fill="#eef3fb" font-size="13">142%</text>
+          </svg>
           <p class="chart-meta">
-            Measurements shown: Australia MFP annual change in 2024 to 25, 20 year average MFP growth, historical 1994 to 95 to 2003 to 04 average MFP growth, and business AI R&D growth since 2021 to 22. The last value is placed on a second axis because it is much larger.
+            The first three bars show productivity growth comparisons. The final bar shows Australian AI R&D growth since 2021 to 22, included to show how quickly firms have increased AI related investment even while national productivity remains weak.
           </p>
           <div class="refs">
             Graph references:
@@ -523,20 +506,44 @@ ul{
       </div>
 
       <div class="panel">
-        <h2>Measured productivity effects from AI</h2>
+        <h2>Observed AI related gains</h2>
         <p>
-          Workplace studies increasingly find that generative AI can improve task performance in business style settings. One new randomized experiment cited here examines 1,174 adults completing a workplace style business problem solving task and focuses directly on whether generative AI narrows productivity gaps across education levels. That is useful because it links AI not just to average efficiency but also to distribution.
+          Survey and experimental evidence shows that AI can already improve workplace outcomes. Deloitte reports that 61% of Australian companies in its survey say AI is delivering improved efficiency. However, only 30% say they are using AI to deeply transform work. That gap matters because incremental gains are easier than full workflow redesign.
         </p>
         <p>
-          Australian enterprise survey evidence also points to real efficiency effects. Deloitte reports that 61% of Australian companies in its survey say AI is delivering improved efficiency. However, only 30% say they are deeply transforming how work is done. That distinction is important. Early productivity gains often come from point improvements. Broader gains require redesign of workflows, roles and management systems.
+          The same survey shows 65% of Australian respondents intend to raise AI investment next year, compared with 84% globally. Only 12% of Australian leaders report that generative AI is already transforming their business or industry, compared with 25% globally. That suggests Australia is investing, but scaling more slowly than some global peers.
         </p>
 
-        <div class="chart-wrap">
+        <div class="chart-card">
           <h4>Chart 2. Observed AI related improvement indicators</h4>
-          <canvas id="chartEfficiency"></canvas>
-          <p class="chart-meta">
-            This chart compares measured or survey based indicators: reported enterprise efficiency gains, share of firms using AI for deep work transformation, Australian respondents intending to raise AI investment, global respondents intending to raise AI investment, and the Australian versus global share reporting that generative AI is already transforming business or industry.
-          </p>
+          <svg class="chart-svg" viewBox="0 0 720 380" aria-label="Horizontal bar chart showing AI improvement indicators">
+            <line x1="180" y1="35" x2="180" y2="330" stroke="#6f7f96" stroke-width="1"/>
+            <line x1="180" y1="330" x2="660" y2="330" stroke="#6f7f96" stroke-width="1"/>
+
+            <text x="20" y="70" fill="#c4cfde" font-size="13">AU improved efficiency</text>
+            <rect x="180" y="55" width="293" height="22" fill="#7fb3ff"/>
+            <text x="482" y="71" fill="#eef3fb" font-size="13">61%</text>
+
+            <text x="20" y="115" fill="#c4cfde" font-size="13">AU deep transformation</text>
+            <rect x="180" y="100" width="144" height="22" fill="#5d89d6"/>
+            <text x="333" y="116" fill="#eef3fb" font-size="13">30%</text>
+
+            <text x="20" y="160" fill="#c4cfde" font-size="13">AU raise AI investment</text>
+            <rect x="180" y="145" width="312" height="22" fill="#a8cbff"/>
+            <text x="501" y="161" fill="#eef3fb" font-size="13">65%</text>
+
+            <text x="20" y="205" fill="#c4cfde" font-size="13">Global raise AI investment</text>
+            <rect x="180" y="190" width="403" height="22" fill="#88aef2"/>
+            <text x="592" y="206" fill="#eef3fb" font-size="13">84%</text>
+
+            <text x="20" y="250" fill="#c4cfde" font-size="13">AU already transforming</text>
+            <rect x="180" y="235" width="58" height="22" fill="#6f8fd1"/>
+            <text x="247" y="251" fill="#eef3fb" font-size="13">12%</text>
+
+            <text x="20" y="295" fill="#c4cfde" font-size="13">Global already transforming</text>
+            <rect x="180" y="280" width="120" height="22" fill="#9abbf6"/>
+            <text x="309" y="296" fill="#eef3fb" font-size="13">25%</text>
+          </svg>
           <div class="refs">
             Graph references:
             <a href="[deloitte.com](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html)" target="_blank">Deloitte Australia State of AI in the Enterprise 2026</a> |
@@ -545,16 +552,6 @@ ul{
         </div>
       </div>
     </div>
-
-    <div class="panel">
-      <h3>Interpretation</h3>
-      <p>
-        The combined message is that AI can plausibly improve productivity, but the economy wide effect is not automatic. The observed numbers show strong interest, strong experimentation and meaningful efficiency gains. They also show a scaling problem. Australian firms are investing, yet many still appear to be in a pilots rather than transformation phase. That is exactly the pattern expected with a general purpose technology in its early diffusion stage.
-      </p>
-      <p>
-        The stronger story is that AI creates a realistic productivity opportunity in an economy that needs one, but diffusion and complementary change will determine how large and how widely shared the gains become.
-      </p>
-    </div>
   </section>
 
   <section id="industries" class="page">
@@ -562,18 +559,39 @@ ul{
       <div class="panel">
         <h2>Industry exposure</h2>
         <p>
-          Not every sector is affected in the same way. AI has the biggest early effect where work is text heavy, rules based, data rich, or dependent on prediction and classification. That gives professional services, finance, government administration and parts of healthcare a relatively high exposure. Education is also affected, though often through support and content assistance rather than pure substitution.
-        </p>
-        <p>
-          The chart below combines observed evidence and transparent modelling. The percentage style values are labelled as an exposure index out of 100, built from the task profile described in the essay and anchored to observed adoption and productivity findings.
+          AI affects sectors differently depending on task structure. Information intensive, language heavy and rules based work tends to be more exposed. That is why professional services, finance, government administration and parts of healthcare sit near the top of the exposure ranking used in this site.
         </p>
 
-        <div class="chart-wrap">
+        <div class="chart-card">
           <h4>Chart 3. AI exposure index by sector, out of 100</h4>
-          <canvas id="chartIndustry"></canvas>
-          <p class="chart-meta">
-            Exposure index interpretation: higher values mean a larger share of sector work appears susceptible to AI based augmentation or automation because tasks are information heavy, repetitive, predictive, document centred, or service based.
-          </p>
+          <svg class="chart-svg" viewBox="0 0 720 400" aria-label="Horizontal bar chart of AI exposure by sector">
+            <line x1="190" y1="30" x2="190" y2="350" stroke="#6f7f96" stroke-width="1"/>
+            <line x1="190" y1="350" x2="670" y2="350" stroke="#6f7f96" stroke-width="1"/>
+
+            <text x="20" y="60" fill="#c4cfde" font-size="13">Professional services</text>
+            <rect x="190" y="45" width="422" height="20" fill="#a8cbff"/><text x="620" y="60" fill="#eef3fb" font-size="13">88</text>
+
+            <text x="20" y="95" fill="#c4cfde" font-size="13">Finance</text>
+            <rect x="190" y="80" width="403" height="20" fill="#7fb3ff"/><text x="601" y="95" fill="#eef3fb" font-size="13">84</text>
+
+            <text x="20" y="130" fill="#c4cfde" font-size="13">Government admin</text>
+            <rect x="190" y="115" width="379" height="20" fill="#6f9be6"/><text x="577" y="130" fill="#eef3fb" font-size="13">79</text>
+
+            <text x="20" y="165" fill="#c4cfde" font-size="13">Healthcare</text>
+            <rect x="190" y="150" width="355" height="20" fill="#5d89d6"/><text x="553" y="165" fill="#eef3fb" font-size="13">74</text>
+
+            <text x="20" y="200" fill="#c4cfde" font-size="13">Education</text>
+            <rect x="190" y="185" width="317" height="20" fill="#94baf5"/><text x="515" y="200" fill="#eef3fb" font-size="13">66</text>
+
+            <text x="20" y="235" fill="#c4cfde" font-size="13">Retail</text>
+            <rect x="190" y="220" width="278" height="20" fill="#83a6e8"/><text x="476" y="235" fill="#eef3fb" font-size="13">58</text>
+
+            <text x="20" y="270" fill="#c4cfde" font-size="13">Manufacturing</text>
+            <rect x="190" y="255" width="226" height="20" fill="#6d89bb"/><text x="424" y="270" fill="#eef3fb" font-size="13">47</text>
+
+            <text x="20" y="305" fill="#c4cfde" font-size="13">Agriculture</text>
+            <rect x="190" y="290" width="168" height="20" fill="#5673a4"/><text x="366" y="305" fill="#eef3fb" font-size="13">35</text>
+          </svg>
           <div class="refs">
             Basis for sector framing:
             <a href="[abs.gov.au](https://www.abs.gov.au/media-centre/media-releases/ai-now-fastest-growing-area-business-rd)" target="_blank">ABS business R&D composition</a> |
@@ -585,60 +603,57 @@ ul{
 
       <div class="panel">
         <h2>Sector analysis</h2>
-        <div class="card-grid two">
+        <div class="card-grid">
           <div class="card">
             <h3>Professional services</h3>
-            <p>
-              This is one of the clearest AI exposed sectors because so much output is created through drafting, research, document review, summarising, coding, compliance checking and client communication. Junior tasks are especially exposed, which may change career ladders rather than simply eliminate jobs.
-            </p>
+            <p>High exposure because drafting, analysis, document review, coding and client communication are central tasks.</p>
           </div>
           <div class="card">
             <h3>Healthcare</h3>
-            <p>
-              Healthcare is less about replacing clinicians and more about triage, diagnostics support, admin reduction and document handling. Gains here can matter because demand pressure is high and administrative overhead is substantial. AI may raise system capacity even when full automation is unrealistic.
-            </p>
+            <p>Strong potential through triage, diagnostics support, records handling and admin reduction rather than full clinical replacement.</p>
           </div>
           <div class="card">
             <h3>Education</h3>
-            <p>
-              Education benefits through lesson drafting, resource generation, feedback support and student assistance. The key risk is unequal access and uneven digital literacy. AI may simultaneously raise teaching efficiency and widen differences in how well students can use learning support tools.
-            </p>
+            <p>Useful for lesson support, marking assistance and content generation, but uneven student access may widen gaps.</p>
           </div>
           <div class="card">
             <h3>Finance and government</h3>
-            <p>
-              These sectors combine data intensity with repetitive documentation and compliance routines. Forecasting, reporting, case management, fraud detection, service triage and citizen facing information tasks are all areas where AI can reduce time and lift consistency.
-            </p>
+            <p>High exposure because compliance, reporting, service triage and forecasting are structured and data rich.</p>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="panel">
-      <h3>Exposure measurements used</h3>
-      <p>
-        The sector chart uses explicit numbers: Professional Services 88, Finance 84, Government Administration 79, Healthcare 74, Education 66, Retail 58, Manufacturing 47, Agriculture 35. These are analytical indices for comparison across sectors, not official percentages from one single dataset.
-      </p>
     </div>
   </section>
 
   <section id="australia" class="page">
     <div class="section-grid">
       <div class="panel">
-        <h2>Why Australia is a special case</h2>
+        <h2>Australia specific context</h2>
         <p>
-          Australia is especially interesting because its economy is service intensive, its productivity performance has been weak, and its firms are investing in AI while still lagging some global peers in transformation at scale. That combination makes Australia both highly exposed to AI opportunity and vulnerable to uneven diffusion.
-        </p>
-        <p>
-          The ABS reports that total business expenditure on research and development reached \$24.4 billion in 2023 to 24, up 18%. Within that, AI spending grew 142% since 2021 to 22, from \$276.3 million to \$668.3 million. Information and communication services R&D rose to \$5.9 billion, and health related R&D reached \$3.673 billion.
+          Australia is highly exposed to AI opportunity because it is a service dominated economy with a long running productivity challenge. The ABS reports that total business expenditure on research and development reached \$24.4 billion in 2023 to 24, up 18%. Within that, AI spending grew 142% since 2021 to 22, from \$276.3 million to \$668.3 million.
         </p>
 
-        <div class="chart-wrap">
-          <h4>Chart 4. Australian business R&D values connected to AI relevant sectors</h4>
-          <canvas id="chartAustralia"></canvas>
-          <p class="chart-meta">
-            Bars show 2023 to 24 business R&D by selected categories in billions of Australian dollars, with AI specific R&D also highlighted.
-          </p>
+        <div class="chart-card">
+          <h4>Chart 4. Australian business R&D values</h4>
+          <svg class="chart-svg" viewBox="0 0 720 360" aria-label="Bar chart of Australian business R&D values">
+            <line x1="70" y1="35" x2="70" y2="300" stroke="#6f7f96" stroke-width="1"/>
+            <line x1="70" y1="300" x2="670" y2="300" stroke="#6f7f96" stroke-width="1"/>
+
+            <rect x="120" y="56" width="80" height="244" fill="#a8cbff"/>
+            <rect x="260" y="241" width="80" height="59" fill="#7fb3ff"/>
+            <rect x="400" y="263" width="80" height="37" fill="#5d89d6"/>
+            <rect x="540" y="293" width="80" height="7" fill="#88aef2"/>
+
+            <text x="109" y="325" fill="#c4cfde" font-size="13">Total R&amp;D</text>
+            <text x="252" y="325" fill="#c4cfde" font-size="13">Info &amp; comms</text>
+            <text x="418" y="325" fill="#c4cfde" font-size="13">Health</text>
+            <text x="553" y="325" fill="#c4cfde" font-size="13">AI</text>
+
+            <text x="125" y="48" fill="#eef3fb" font-size="13">24.4b</text>
+            <text x="268" y="233" fill="#eef3fb" font-size="13">5.9b</text>
+            <text x="405" y="255" fill="#eef3fb" font-size="13">3.673b</text>
+            <text x="542" y="285" fill="#eef3fb" font-size="13">0.668b</text>
+          </svg>
           <div class="refs">
             Graph reference:
             <a href="[abs.gov.au](https://www.abs.gov.au/media-centre/media-releases/ai-now-fastest-growing-area-business-rd)" target="_blank">ABS Research and Experimental Development, Businesses, Australia</a>
@@ -647,59 +662,42 @@ ul{
       </div>
 
       <div class="panel">
-        <h2>What the Australian numbers mean</h2>
+        <h2>What these numbers mean</h2>
         <p>
-          These values show more than enthusiasm. They show sector positioning. The strongest business R&D areas are already concentrated in knowledge intensive and digitally intensive activity. That makes it easier for AI to spread in some parts of the economy than others.
+          These values show that AI is becoming a serious investment category rather than a marginal experiment. The federal policy environment also points in the same direction. The budget includes up to \$70 million for AI Accelerator grants and references AI use in approvals and regulatory processes.
         </p>
-        <p>
-          The federal policy environment also signals that government sees AI as part of the productivity story. The budget includes up to \$70 million for AI Accelerator grants and references AI use in approvals and regulatory processes.
-        </p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Measure</th>
+              <th>Value</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Total business R&D</td>
+              <td>\$24.4 billion</td>
+              <td>Broad innovation capacity across firms.</td>
+            </tr>
+            <tr>
+              <td>AI R&D</td>
+              <td>\$668.3 million</td>
+              <td>AI has become a meaningful investment category.</td>
+            </tr>
+            <tr>
+              <td>AI R&D growth</td>
+              <td>142%</td>
+              <td>Rapid acceleration in firm investment.</td>
+            </tr>
+            <tr>
+              <td>AI Accelerator grants</td>
+              <td>Up to \$70 million</td>
+              <td>Shows policy support for diffusion and development.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-
-    <div class="panel">
-      <h3>Australia summary table</h3>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Measure</th>
-            <th>Value</th>
-            <th>Why it matters</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Total business R&D</td>
-            <td>\$24.4 billion</td>
-            <td>Shows broad innovation investment capacity across firms.</td>
-          </tr>
-          <tr>
-            <td>AI R&D</td>
-            <td>\$668.3 million</td>
-            <td>Shows AI has become a serious business investment category.</td>
-          </tr>
-          <tr>
-            <td>AI R&D growth since 2021 to 22</td>
-            <td>142%</td>
-            <td>Indicates rapid acceleration rather than marginal experimentation.</td>
-          </tr>
-          <tr>
-            <td>Information and communication services R&D</td>
-            <td>\$5.9 billion</td>
-            <td>Strong base for digital adoption and spillovers.</td>
-          </tr>
-          <tr>
-            <td>Health R&D</td>
-            <td>\$3.673 billion</td>
-            <td>Healthcare has both demand pressure and AI use cases.</td>
-          </tr>
-          <tr>
-            <td>AI Accelerator grants</td>
-            <td>Up to \$70 million</td>
-            <td>Shows policy interest in supporting AI development and diffusion.</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </section>
 
@@ -707,7 +705,7 @@ ul{
     <div class="panel">
       <h2>Scenario engine</h2>
       <p>
-        Each scenario changes the projected chart values, the interpretation, and the policy meaning. The forecast lines are modelled values for this website, informed by current evidence rather than direct official forecasts. The starting point is that 2024 equals 100 on both the productivity index and the inequality pressure index.
+        Each scenario below changes the displayed values and interpretation. The index starts at 100 in 2024 for both productivity and inequality pressure.
       </p>
 
       <div class="scenario-pills">
@@ -718,9 +716,7 @@ ul{
 
       <div class="section-grid">
         <div>
-          <p id="scenarioText" class="lead">
-            Baseline scenario: AI adoption continues steadily, productivity improves gradually, but gains remain uneven because organisational transformation is incomplete and diffusion across firms is patchy.
-          </p>
+          <p id="scenarioText" class="lead"></p>
           <table class="data-table" id="scenarioTable">
             <thead>
               <tr>
@@ -733,12 +729,9 @@ ul{
           </table>
         </div>
 
-        <div class="chart-wrap">
-          <h4>Chart 5. Scenario model, productivity index and inequality pressure index, 2024 = 100</h4>
-          <canvas id="chartScenario"></canvas>
-          <p class="chart-meta">
-            Productivity index shows modelled output per worker improvement path. Inequality pressure index shows distributional strain from uneven adoption, skill gaps and concentration effects.
-          </p>
+        <div class="chart-card">
+          <h4>Chart 5. Scenario model, 2024 = 100</h4>
+          <svg id="scenarioSvg" class="chart-svg" viewBox="0 0 720 360" aria-label="Scenario line chart"></svg>
           <div class="refs">
             Scenario framing informed by:
             <a href="[pc.gov.au](https://www.pc.gov.au/ongoing/productivity-insights/bulletins/bulletin-2026/)" target="_blank">Productivity Commission</a> |
@@ -748,13 +741,6 @@ ul{
         </div>
       </div>
     </div>
-
-    <div class="panel">
-      <h3>How to read the scenario chart</h3>
-      <p>
-        In the baseline, productivity rises but inequality pressure also rises moderately because diffusion is incomplete. In the upside diffusion case, productivity grows more strongly while inequality pressure rises only slightly because access, training and broad uptake improve. In the downside concentration case, productivity gains are weaker overall and inequality pressure rises faster because the benefits pool around large firms and already advantaged workers.
-      </p>
-    </div>
   </section>
 
   <section id="policy" class="page">
@@ -762,49 +748,34 @@ ul{
       <div class="panel">
         <h2>Policy implications</h2>
         <p>
-          If AI is a diffusion challenge as much as a frontier innovation challenge, then policy should focus on capability spread rather than only top end invention. That means workforce training, management capability, adoption support for smaller firms, trustworthy deployment standards, and public sector use cases that raise state capacity without worsening access gaps.
+          If AI is a diffusion challenge as much as an invention challenge, then policy should focus on capability spread rather than only frontier breakthroughs. That means workforce training, management capability, adoption support for smaller firms, trustworthy deployment standards, and practical public sector use cases.
         </p>
         <p>
-          The key policy areas are skills, competition, diffusion and institutional readiness. Skills matter because the returns to AI are higher when workers know how to integrate it into real tasks. Competition matters because AI can reinforce scale advantages. Diffusion matters because productivity gains at frontier firms do not automatically reach the wider economy.
+          The strongest policy areas are skills, competition, diffusion and institutional readiness. Productivity gains at frontier firms do not automatically spread to the wider economy.
         </p>
       </div>
 
       <div class="panel">
         <h2>Priority actions</h2>
-        <div class="card-grid two">
+        <div class="card-grid">
           <div class="card">
             <h3>Lift workforce capability</h3>
-            <p>
-              Fund practical digital and AI capability programs aimed at workers, teachers, managers and public servants. The goal is workflow competence.
-            </p>
+            <p>Focus on practical AI use in real workflows, not just general awareness.</p>
           </div>
           <div class="card">
             <h3>Support small firm diffusion</h3>
-            <p>
-              Smaller firms often lack the capability to move from experimentation to redesign. Targeted extension support and advisory programs can reduce that gap.
-            </p>
+            <p>Help smaller firms move from pilots to integration and redesign.</p>
           </div>
           <div class="card">
             <h3>Protect competition</h3>
-            <p>
-              Watch for concentration in data, cloud dependence and model access. A major long term risk is an AI economy where only a narrow group of firms can capture returns.
-            </p>
+            <p>Monitor concentration in data access, compute, cloud and model dependence.</p>
           </div>
           <div class="card">
             <h3>Use AI in government carefully</h3>
-            <p>
-              Public sector AI can speed approvals, service delivery and navigation of regulation, but trust, accountability and clear review pathways are essential.
-            </p>
+            <p>Faster approvals and services matter, but review, accountability and trust remain essential.</p>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="panel">
-      <h3>Final policy reading</h3>
-      <p>
-        The most defensible conclusion is that AI can help Australia, but only if adoption broadens beyond pilots and beyond already advantaged firms. The evidence does not support a simple story of either inevitable mass unemployment or automatic prosperity. It supports a middle position: AI is a meaningful productivity technology whose benefits depend on how institutions, firms and workers adapt around it.
-      </p>
     </div>
   </section>
 
@@ -820,11 +791,11 @@ ul{
       </ul>
 
       <div class="refs" style="margin-top:16px;">
-        <a href="[pc.gov.au](https://www.pc.gov.au/ongoing/productivity-insights/bulletins/bulletin-2026/)" target="_blank">[pc.gov.au](https://www.pc.gov.au/ongoing/productivity-insights/bulletins/bulletin-2026/)</a>
-        <br><a href="[abs.gov.au](https://www.abs.gov.au/media-centre/media-releases/ai-now-fastest-growing-area-business-rd)" target="_blank">[abs.gov.au](https://www.abs.gov.au/media-centre/media-releases/ai-now-fastest-growing-area-business-rd)</a>
-        <br><a href="[budget.gov.au](https://budget.gov.au/content/03-productivity.htm)" target="_blank">[budget.gov.au](https://budget.gov.au/content/03-productivity.htm)</a>
-        <br><a href="[deloitte.com](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html)" target="_blank">[deloitte.com](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html)</a>
-        <br><a href="[nber.org](https://www.nber.org/papers/w34851)" target="_blank">[nber.org](https://www.nber.org/papers/w34851)</a>
+        <a href="[pc.gov.au](https://www.pc.gov.au/ongoing/productivity-insights/bulletins/bulletin-2026/)" target="_blank">[pc.gov.au](https://www.pc.gov.au/ongoing/productivity-insights/bulletins/bulletin-2026/)</a><br>
+        <a href="[abs.gov.au](https://www.abs.gov.au/media-centre/media-releases/ai-now-fastest-growing-area-business-rd)" target="_blank">[abs.gov.au](https://www.abs.gov.au/media-centre/media-releases/ai-now-fastest-growing-area-business-rd)</a><br>
+        <a href="[budget.gov.au](https://budget.gov.au/content/03-productivity.htm)" target="_blank">[budget.gov.au](https://budget.gov.au/content/03-productivity.htm)</a><br>
+        <a href="[deloitte.com](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html)" target="_blank">[deloitte.com](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html)</a><br>
+        <a href="[nber.org](https://www.nber.org/papers/w34851)" target="_blank">[nber.org](https://www.nber.org/papers/w34851)</a>
       </div>
     </div>
   </section>
@@ -844,160 +815,6 @@ tabs.forEach(tab => {
     document.getElementById(target).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-});
-
-const commonOptions = {
-  responsive:true,
-  maintainAspectRatio:false,
-  plugins:{
-    legend:{
-      labels:{
-        color:'#e9dcc8',
-        font:{ family:'Arial', size:12 }
-      }
-    },
-    tooltip:{
-      backgroundColor:'rgba(18,18,24,0.95)',
-      titleColor:'#f2c27b',
-      bodyColor:'#f6efe4',
-      borderColor:'rgba(242,194,123,0.2)',
-      borderWidth:1
-    }
-  },
-  scales:{
-    x:{
-      ticks:{ color:'#c8b8a4' },
-      grid:{ color:'rgba(255,255,255,0.04)' }
-    },
-    y:{
-      ticks:{ color:'#c8b8a4' },
-      grid:{ color:'rgba(255,255,255,0.05)' }
-    }
-  }
-};
-
-new Chart(document.getElementById('chartProductivity'), {
-  type:'bar',
-  data:{
-    labels:['MFP 2024 to 25','20 year avg MFP','1994 to 95 to 2003 to 04 avg MFP','AI R&D growth since 2021 to 22'],
-    datasets:[
-      {
-        type:'bar',
-        label:'Productivity growth percent',
-        data:[-0.5, 0.4, 1.6, null],
-        backgroundColor:['#8a4a3b','#c18a4c','#f2c27b','rgba(0,0,0,0)'],
-        borderColor:['#8a4a3b','#c18a4c','#f2c27b','rgba(0,0,0,0)'],
-        yAxisID:'y'
-      },
-      {
-        type:'line',
-        label:'AI R&D growth percent',
-        data:[null, null, null, 142],
-        borderColor:'#f2c27b',
-        backgroundColor:'#f2c27b',
-        yAxisID:'y1',
-        tension:0.25,
-        pointRadius:5,
-        pointHoverRadius:6
-      }
-    ]
-  },
-  options:{
-    ...commonOptions,
-    scales:{
-      x:{ ticks:{ color:'#c8b8a4' }, grid:{ color:'rgba(255,255,255,0.04)' } },
-      y:{
-        position:'left',
-        ticks:{ color:'#c8b8a4' },
-        grid:{ color:'rgba(255,255,255,0.05)' },
-        title:{ display:true, text:'Productivity growth %', color:'#c8b8a4' }
-      },
-      y1:{
-        position:'right',
-        ticks:{ color:'#f2c27b' },
-        grid:{ drawOnChartArea:false },
-        title:{ display:true, text:'AI R&D growth %', color:'#f2c27b' }
-      }
-    }
-  }
-});
-
-new Chart(document.getElementById('chartEfficiency'), {
-  type:'bar',
-  data:{
-    labels:[
-      'AU firms improved efficiency',
-      'AU firms deeply transforming work',
-      'AU intend to raise AI investment',
-      'Global intend to raise AI investment',
-      'AU say AI already transforming business',
-      'Global say AI already transforming business'
-    ],
-    datasets:[{
-      label:'Share of respondents %',
-      data:[61,30,65,84,12,25],
-      backgroundColor:['#d8a45c','#9d6a3b','#f2c27b','#efb463','#7d5340','#c88e4d'],
-      borderRadius:8
-    }]
-  },
-  options:commonOptions
-});
-
-new Chart(document.getElementById('chartIndustry'), {
-  type:'radar',
-  data:{
-    labels:['Professional services','Finance','Government admin','Healthcare','Education','Retail','Manufacturing','Agriculture'],
-    datasets:[{
-      label:'AI exposure index out of 100',
-      data:[88,84,79,74,66,58,47,35],
-      borderColor:'#f2c27b',
-      backgroundColor:'rgba(242,194,123,0.18)',
-      pointBackgroundColor:'#f2c27b',
-      pointBorderColor:'#f2c27b',
-      pointRadius:4
-    }]
-  },
-  options:{
-    responsive:true,
-    maintainAspectRatio:false,
-    plugins:{
-      legend:{ labels:{ color:'#e9dcc8' } }
-    },
-    scales:{
-      r:{
-        angleLines:{ color:'rgba(255,255,255,0.08)' },
-        grid:{ color:'rgba(255,255,255,0.08)' },
-        pointLabels:{ color:'#c8b8a4', font:{ size:12 } },
-        ticks:{ color:'#c8b8a4', backdropColor:'transparent' },
-        suggestedMin:0,
-        suggestedMax:100
-      }
-    }
-  }
-});
-
-new Chart(document.getElementById('chartAustralia'), {
-  type:'bar',
-  data:{
-    labels:['Total business R&D','Info & comms R&D','Health R&D','AI R&D'],
-    datasets:[{
-      label:'AUD billions',
-      data:[24.4,5.9,3.673,0.6683],
-      backgroundColor:['#f2c27b','#d8a45c','#b87a48','#8d573d'],
-      borderRadius:8
-    }]
-  },
-  options:{
-    ...commonOptions,
-    scales:{
-      x:{ ticks:{ color:'#c8b8a4' }, grid:{ color:'rgba(255,255,255,0.04)' } },
-      y:{
-        ticks:{ color:'#c8b8a4' },
-        grid:{ color:'rgba(255,255,255,0.05)' },
-        title:{ display:true, text:'AUD billions', color:'#c8b8a4' }
-      }
-    }
-  }
 });
 
 const scenarioData = {
@@ -1036,37 +853,10 @@ const scenarioData = {
   }
 };
 
-const scenarioChart = new Chart(document.getElementById('chartScenario'), {
-  type:'line',
-  data:{
-    labels:['2024','2025','2026','2027','2028','2029','2030'],
-    datasets:[
-      {
-        label:'Productivity index',
-        data:scenarioData.baseline.productivity,
-        borderColor:'#f2c27b',
-        backgroundColor:'rgba(242,194,123,0.15)',
-        tension:0.3,
-        pointRadius:4,
-        fill:false
-      },
-      {
-        label:'Inequality pressure index',
-        data:scenarioData.baseline.inequality,
-        borderColor:'#9c5b47',
-        backgroundColor:'rgba(156,91,71,0.15)',
-        tension:0.3,
-        pointRadius:4,
-        fill:false
-      }
-    ]
-  },
-  options:commonOptions
-});
-
 const scenarioButtons = document.querySelectorAll('.scenario-btn');
 const scenarioText = document.getElementById('scenarioText');
 const scenarioTableBody = document.querySelector('#scenarioTable tbody');
+const scenarioSvg = document.getElementById('scenarioSvg');
 
 function renderScenarioTable(rows){
   scenarioTableBody.innerHTML = '';
@@ -1077,14 +867,63 @@ function renderScenarioTable(rows){
   });
 }
 
+function linePath(values, minY, maxY, left, top, width, height){
+  const step = width / (values.length - 1);
+  return values.map((v, i) => {
+    const x = left + i * step;
+    const y = top + height - ((v - minY) / (maxY - minY)) * height;
+    return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
+  }).join(' ');
+}
+
+function renderScenarioChart(productivity, inequality){
+  const labels = ['2024','2025','2026','2027','2028','2029','2030'];
+  const minY = 98;
+  const maxY = 120;
+  const left = 70;
+  const top = 30;
+  const width = 600;
+  const height = 250;
+
+  const prodPath = linePath(productivity, minY, maxY, left, top, width, height);
+  const ineqPath = linePath(inequality, minY, maxY, left, top, width, height);
+
+  let xLabels = '';
+  labels.forEach((label, i) => {
+    const x = left + (width / (labels.length - 1)) * i;
+    xLabels += `<text x="${x - 16}" y="315" fill="#c4cfde" font-size="12">${label}</text>`;
+  });
+
+  scenarioSvg.innerHTML = `
+    <line x1="${left}" y1="${top}" x2="${left}" y2="${top + height}" stroke="#6f7f96" stroke-width="1"/>
+    <line x1="${left}" y1="${top + height}" x2="${left + width}" y2="${top + height}" stroke="#6f7f96" stroke-width="1"/>
+
+    <line x1="${left}" y1="250" x2="${left + width}" y2="250" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <line x1="${left}" y1="175" x2="${left + width}" y2="175" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <line x1="${left}" y1="100" x2="${left + width}" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+    <text x="18" y="285" fill="#c4cfde" font-size="12">100</text>
+    <text x="18" y="210" fill="#c4cfde" font-size="12">106</text>
+    <text x="18" y="135" fill="#c4cfde" font-size="12">112</text>
+    <text x="18" y="60" fill="#c4cfde" font-size="12">118</text>
+
+    <path d="${prodPath}" fill="none" stroke="#a8cbff" stroke-width="4" stroke-linecap="round"/>
+    <path d="${ineqPath}" fill="none" stroke="#d57f7f" stroke-width="4" stroke-linecap="round"/>
+
+    ${xLabels}
+
+    <rect x="420" y="18" width="14" height="14" fill="#a8cbff" rx="3"/>
+    <text x="442" y="30" fill="#eef3fb" font-size="12">Productivity index</text>
+    <rect x="560" y="18" width="14" height="14" fill="#d57f7f" rx="3"/>
+    <text x="582" y="30" fill="#eef3fb" font-size="12">Inequality pressure</text>
+  `;
+}
+
 function setScenario(name){
   const s = scenarioData[name];
   scenarioText.textContent = s.text;
-  scenarioChart.data.datasets[0].data = s.productivity;
-  scenarioChart.data.datasets[1].data = s.inequality;
-  scenarioChart.update();
   renderScenarioTable(s.table);
-
+  renderScenarioChart(s.productivity, s.inequality);
   scenarioButtons.forEach(btn => {
     btn.classList.toggle('active', btn.dataset.scenario === name);
   });
