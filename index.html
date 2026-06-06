@@ -18,7 +18,6 @@
   --muted:#c8b8a4;
   --muted2:#a89682;
   --line:rgba(242,194,123,0.16);
-  --glow:rgba(216,164,92,0.18);
   --shadow:0 18px 50px rgba(0,0,0,0.45);
 }
 
@@ -35,21 +34,11 @@ body{
   font-family: Georgia, "Times New Roman", serif;
   color:var(--cream);
   background:
-    radial-gradient(circle at 15% 10%, rgba(216,164,92,0.14), transparent 28%),
-    radial-gradient(circle at 85% 12%, rgba(120,65,30,0.18), transparent 22%),
-    radial-gradient(circle at 50% 100%, rgba(216,164,92,0.08), transparent 30%),
+    radial-gradient(circle at 15% 10%, rgba(216,164,92,0.10), transparent 28%),
+    radial-gradient(circle at 85% 12%, rgba(120,65,30,0.10), transparent 22%),
+    radial-gradient(circle at 50% 100%, rgba(216,164,92,0.05), transparent 30%),
     linear-gradient(180deg, #06070a 0%, #0b0d11 30%, #11131a 100%);
   min-height:100vh;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(transparent 0%, rgba(255,255,255,0.015) 50%, transparent 100%);
-  opacity:0.5;
 }
 
 .topbar{
@@ -57,7 +46,7 @@ body::before{
   top:0;
   z-index:1000;
   backdrop-filter:blur(16px);
-  background:rgba(10,10,14,0.78);
+  background:rgba(10,10,14,0.88);
   border-bottom:1px solid var(--line);
   box-shadow:0 8px 28px rgba(0,0,0,0.25);
 }
@@ -86,7 +75,6 @@ body::before{
   background:
     radial-gradient(circle at 35% 35%, rgba(242,194,123,0.35), rgba(90,52,30,0.08) 60%, transparent 62%),
     linear-gradient(145deg,#1c1513,#0d0e13);
-  box-shadow:0 0 30px rgba(216,164,92,0.12);
 }
 
 .brand-text h1{
@@ -122,7 +110,6 @@ body::before{
   cursor:pointer;
   font-size:0.92rem;
   transition:all 0.25s ease;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.03);
 }
 
 .nav button:hover{
@@ -166,25 +153,13 @@ body::before{
 }
 
 .panel{
-  background:
-    linear-gradient(160deg, rgba(31,24,28,0.96), rgba(18,18,24,0.96));
+  background:linear-gradient(160deg, rgba(31,24,28,0.96), rgba(18,18,24,0.96));
   border:1px solid var(--line);
   border-radius:24px;
   padding:28px;
   box-shadow:var(--shadow);
   position:relative;
   overflow:hidden;
-}
-
-.panel::after{
-  content:"";
-  position:absolute;
-  top:0;
-  right:0;
-  width:180px;
-  height:180px;
-  background:radial-gradient(circle, rgba(216,164,92,0.08), transparent 65%);
-  pointer-events:none;
 }
 
 .kpi-grid,
@@ -291,6 +266,12 @@ ul{
   letter-spacing:0.02em;
 }
 
+.chart-wrap canvas{
+  display:block;
+  width:100% !important;
+  height:320px !important;
+}
+
 .chart-meta{
   margin:12px 0 0;
   color:var(--muted2);
@@ -305,6 +286,7 @@ ul{
   font-size:0.88rem;
   line-height:1.7;
   color:var(--muted2);
+  word-break:break-word;
 }
 
 .refs a{
@@ -378,13 +360,6 @@ ul{
   margin-top:10px;
 }
 
-.footer-note{
-  text-align:center;
-  color:var(--muted2);
-  padding:20px 0 10px;
-  font-size:0.9rem;
-}
-
 @media (max-width:1100px){
   .hero,
   .section-grid,
@@ -432,7 +407,7 @@ ul{
       <div class="brand-mark"></div>
       <div class="brand-text">
         <h1>AI and the Australian Economy</h1>
-        <p>A multi page economics report in a warm jazz lounge style</p>
+        <p>Interactive economics report</p>
       </div>
     </div>
 
@@ -511,12 +486,12 @@ ul{
       </div>
 
       <div class="panel">
-        <h3>Why this matters for your essay argument</h3>
+        <h3>Why this matters for the argument</h3>
         <p>
-          Your original argument about augmentation over pure replacement fits the measured evidence well. The strongest current empirical results come from settings where AI helps workers complete business style tasks more quickly or narrows capability gaps by giving less experienced workers better scaffolding. That does not mean inequality disappears. It means the outcome depends on who gets access, who receives training, and which firms can reorganise work around the tool.
+          The argument about augmentation over pure replacement fits the measured evidence well. The strongest current empirical results come from settings where AI helps workers complete business style tasks more quickly or narrows capability gaps by giving less experienced workers better scaffolding. That does not mean inequality disappears. It means the outcome depends on who gets access, who receives training, and which firms can reorganise work around the tool.
         </p>
         <p>
-          For that reason, the charts below use measured values where possible and labelled scenario values where the future is uncertain. The site clearly distinguishes between observed evidence and forecast modelling.
+          For that reason, the charts below use measured values where possible and labelled scenario values where the future is uncertain. The site distinguishes between observed evidence and forecast modelling.
         </p>
       </div>
     </div>
@@ -550,7 +525,7 @@ ul{
       <div class="panel">
         <h2>Measured productivity effects from AI</h2>
         <p>
-          Workplace studies increasingly find that generative AI can improve task performance in business style settings. One new randomized experiment cited here examines 1,174 adults completing a workplace style business problem solving task and focuses directly on whether generative AI narrows productivity gaps across education levels. That is useful for your project because it links AI not just to average efficiency but also to distribution.
+          Workplace studies increasingly find that generative AI can improve task performance in business style settings. One new randomized experiment cited here examines 1,174 adults completing a workplace style business problem solving task and focuses directly on whether generative AI narrows productivity gaps across education levels. That is useful because it links AI not just to average efficiency but also to distribution.
         </p>
         <p>
           Australian enterprise survey evidence also points to real efficiency effects. Deloitte reports that 61% of Australian companies in its survey say AI is delivering improved efficiency. However, only 30% say they are deeply transforming how work is done. That distinction is important. Early productivity gains often come from point improvements. Broader gains require redesign of workflows, roles and management systems.
@@ -574,10 +549,10 @@ ul{
     <div class="panel">
       <h3>Interpretation</h3>
       <p>
-        The combined message is that AI can plausibly improve productivity, but the economy wide effect is not automatic. The observed numbers show strong interest, strong experimentation and meaningful efficiency gains. They also show a scaling problem. Australian firms are investing, yet many still appear to be in a pilots rather than transformation phase. That is exactly the pattern you would expect with a general purpose technology in its early diffusion stage.
+        The combined message is that AI can plausibly improve productivity, but the economy wide effect is not automatic. The observed numbers show strong interest, strong experimentation and meaningful efficiency gains. They also show a scaling problem. Australian firms are investing, yet many still appear to be in a pilots rather than transformation phase. That is exactly the pattern expected with a general purpose technology in its early diffusion stage.
       </p>
       <p>
-        For your website, this means the strongest story is not "AI will save the economy overnight". The stronger story is "AI creates a realistic productivity opportunity in an economy that needs one, but diffusion and complementary change will determine how large and how widely shared the gains become."
+        The stronger story is that AI creates a realistic productivity opportunity in an economy that needs one, but diffusion and complementary change will determine how large and how widely shared the gains become.
       </p>
     </div>
   </section>
@@ -590,14 +565,14 @@ ul{
           Not every sector is affected in the same way. AI has the biggest early effect where work is text heavy, rules based, data rich, or dependent on prediction and classification. That gives professional services, finance, government administration and parts of healthcare a relatively high exposure. Education is also affected, though often through support and content assistance rather than pure substitution.
         </p>
         <p>
-          To avoid pretending that uncertain long term sector exposure is already fully measured by one official dataset, the chart below combines observed evidence and transparent modelling. The exact percentage values are labelled as an exposure index out of 100, built from the task profile described in your essay and anchored to observed adoption and productivity findings.
+          The chart below combines observed evidence and transparent modelling. The percentage style values are labelled as an exposure index out of 100, built from the task profile described in the essay and anchored to observed adoption and productivity findings.
         </p>
 
         <div class="chart-wrap">
           <h4>Chart 3. AI exposure index by sector, out of 100</h4>
           <canvas id="chartIndustry"></canvas>
           <p class="chart-meta">
-            Exposure index interpretation: higher values mean a larger share of sector work appears susceptible to AI based augmentation or automation because tasks are information heavy, repetitive, predictive, document centred, or service based. These are analytical indices for the website, not official government percentages.
+            Exposure index interpretation: higher values mean a larger share of sector work appears susceptible to AI based augmentation or automation because tasks are information heavy, repetitive, predictive, document centred, or service based.
           </p>
           <div class="refs">
             Basis for sector framing:
@@ -609,7 +584,7 @@ ul{
       </div>
 
       <div class="panel">
-        <h2>Sector pages with more substance</h2>
+        <h2>Sector analysis</h2>
         <div class="card-grid two">
           <div class="card">
             <h3>Professional services</h3>
@@ -640,9 +615,9 @@ ul{
     </div>
 
     <div class="panel">
-      <h3>Why the graph has measurements instead of vague bars</h3>
+      <h3>Exposure measurements used</h3>
       <p>
-        The sector chart uses explicit numbers: Professional Services 88, Finance 84, Government Administration 79, Healthcare 74, Education 66, Retail 58, Manufacturing 47, Agriculture 35. These are not random percentages. They are a transparent exposure index built to reflect where AI is currently most effective based on the nature of work. This is better than vague visual bars because it gives the marker something interpretable. It shows you are modelling the concept carefully even where no single official Australian sector exposure table exists in one place.
+        The sector chart uses explicit numbers: Professional Services 88, Finance 84, Government Administration 79, Healthcare 74, Education 66, Retail 58, Manufacturing 47, Agriculture 35. These are analytical indices for comparison across sectors, not official percentages from one single dataset.
       </p>
     </div>
   </section>
@@ -655,14 +630,14 @@ ul{
           Australia is especially interesting because its economy is service intensive, its productivity performance has been weak, and its firms are investing in AI while still lagging some global peers in transformation at scale. That combination makes Australia both highly exposed to AI opportunity and vulnerable to uneven diffusion.
         </p>
         <p>
-          The ABS reports that total business expenditure on research and development reached \$24.4 billion in 2023 to 24, up 18%. Within that, AI spending grew 142% since 2021 to 22, from \$276.3 million to \$668.3 million. Information and communication services R&D rose to \$5.9 billion, and health related R&D reached \$3.673 billion. These are useful signals that AI capability building is increasingly tied to major sectors of the economy.
+          The ABS reports that total business expenditure on research and development reached \$24.4 billion in 2023 to 24, up 18%. Within that, AI spending grew 142% since 2021 to 22, from \$276.3 million to \$668.3 million. Information and communication services R&D rose to \$5.9 billion, and health related R&D reached \$3.673 billion.
         </p>
 
         <div class="chart-wrap">
-          <h4>Chart 4. Australian business R&D values connected to AI relevant sectors, \$ billions unless stated</h4>
+          <h4>Chart 4. Australian business R&D values connected to AI relevant sectors</h4>
           <canvas id="chartAustralia"></canvas>
           <p class="chart-meta">
-            Bars show 2023 to 24 business R&D by selected sector objective categories in billions of Australian dollars, with AI specific R&D shown in millions on the line axis.
+            Bars show 2023 to 24 business R&D by selected categories in billions of Australian dollars, with AI specific R&D also highlighted.
           </p>
           <div class="refs">
             Graph reference:
@@ -674,16 +649,16 @@ ul{
       <div class="panel">
         <h2>What the Australian numbers mean</h2>
         <p>
-          These values show more than enthusiasm. They show sector positioning. The strongest business R&D areas are already concentrated in knowledge intensive and digitally intensive activity. That makes it easier for AI to spread in some parts of the economy than others. The risk is a two speed diffusion pattern where already capable firms adopt quickly while smaller firms, regional businesses and lower capability workplaces fall behind.
+          These values show more than enthusiasm. They show sector positioning. The strongest business R&D areas are already concentrated in knowledge intensive and digitally intensive activity. That makes it easier for AI to spread in some parts of the economy than others.
         </p>
         <p>
-          The federal policy environment also signals that government sees AI as part of the productivity story. The budget includes up to \$70 million for AI Accelerator grants and references AI use in approvals and regulatory processes. That tells you diffusion is not only a private sector story. State capacity and public sector use may also shape the returns.
+          The federal policy environment also signals that government sees AI as part of the productivity story. The budget includes up to \$70 million for AI Accelerator grants and references AI use in approvals and regulatory processes.
         </p>
       </div>
     </div>
 
     <div class="panel">
-      <h3>Australia page summary table</h3>
+      <h3>Australia summary table</h3>
       <table class="data-table">
         <thead>
           <tr>
@@ -732,7 +707,7 @@ ul{
     <div class="panel">
       <h2>Scenario engine</h2>
       <p>
-        This section moves beyond a static essay. Each scenario changes the projected chart values, the interpretation, and the policy meaning. The forecast lines are modelled values for this website, informed by current evidence rather than direct official forecasts. The starting point is that 2024 equals 100 on both the productivity index and the inequality pressure index.
+        Each scenario changes the projected chart values, the interpretation, and the policy meaning. The forecast lines are modelled values for this website, informed by current evidence rather than direct official forecasts. The starting point is that 2024 equals 100 on both the productivity index and the inequality pressure index.
       </p>
 
       <div class="scenario-pills">
@@ -762,7 +737,7 @@ ul{
           <h4>Chart 5. Scenario model, productivity index and inequality pressure index, 2024 = 100</h4>
           <canvas id="chartScenario"></canvas>
           <p class="chart-meta">
-            Productivity index shows modelled output per worker improvement path. Inequality pressure index shows distributional strain from uneven adoption, skill gaps and concentration effects. It is not the official Gini coefficient.
+            Productivity index shows modelled output per worker improvement path. Inequality pressure index shows distributional strain from uneven adoption, skill gaps and concentration effects.
           </p>
           <div class="refs">
             Scenario framing informed by:
@@ -777,10 +752,7 @@ ul{
     <div class="panel">
       <h3>How to read the scenario chart</h3>
       <p>
-        In the <strong>baseline</strong>, productivity rises but inequality pressure also rises moderately because diffusion is incomplete. In the <strong>upside diffusion</strong> case, productivity grows more strongly while inequality pressure rises only slightly because access, training and broad uptake improve. In the <strong>downside concentration</strong> case, productivity gains are weaker overall and inequality pressure rises faster because the benefits pool around large firms and already advantaged workers.
-      </p>
-      <p>
-        This is a stronger scenario section because it no longer just swaps text. It changes the actual measurements used in the chart and in the scenario table, making the interactivity academically meaningful.
+        In the baseline, productivity rises but inequality pressure also rises moderately because diffusion is incomplete. In the upside diffusion case, productivity grows more strongly while inequality pressure rises only slightly because access, training and broad uptake improve. In the downside concentration case, productivity gains are weaker overall and inequality pressure rises faster because the benefits pool around large firms and already advantaged workers.
       </p>
     </div>
   </section>
@@ -793,7 +765,7 @@ ul{
           If AI is a diffusion challenge as much as a frontier innovation challenge, then policy should focus on capability spread rather than only top end invention. That means workforce training, management capability, adoption support for smaller firms, trustworthy deployment standards, and public sector use cases that raise state capacity without worsening access gaps.
         </p>
         <p>
-          The key policy areas are skills, competition, diffusion and institutional readiness. Skills matter because the returns to AI are higher when workers know how to integrate it into real tasks. Competition matters because AI can reinforce scale advantages. Diffusion matters because productivity gains at frontier firms do not automatically reach the wider economy. Institutional readiness matters because public services can become faster and more coherent when AI is used well.
+          The key policy areas are skills, competition, diffusion and institutional readiness. Skills matter because the returns to AI are higher when workers know how to integrate it into real tasks. Competition matters because AI can reinforce scale advantages. Diffusion matters because productivity gains at frontier firms do not automatically reach the wider economy.
         </p>
       </div>
 
@@ -801,27 +773,27 @@ ul{
         <h2>Priority actions</h2>
         <div class="card-grid two">
           <div class="card">
-            <h3>1. Lift workforce capability</h3>
+            <h3>Lift workforce capability</h3>
             <p>
-              Fund practical digital and AI capability programs aimed at workers, teachers, managers and public servants. The goal is not abstract AI literacy. It is workflow competence.
+              Fund practical digital and AI capability programs aimed at workers, teachers, managers and public servants. The goal is workflow competence.
             </p>
           </div>
           <div class="card">
-            <h3>2. Support small firm diffusion</h3>
+            <h3>Support small firm diffusion</h3>
             <p>
-              Smaller firms often lack the capability to move from experimentation to redesign. Targeted extension support, advisory programs and demonstration projects can reduce that gap.
+              Smaller firms often lack the capability to move from experimentation to redesign. Targeted extension support and advisory programs can reduce that gap.
             </p>
           </div>
           <div class="card">
-            <h3>3. Protect competition</h3>
+            <h3>Protect competition</h3>
             <p>
-              Watch for concentration in data, cloud dependence and model access. The biggest long term risk is an AI economy where only a narrow group of firms can capture returns.
+              Watch for concentration in data, cloud dependence and model access. A major long term risk is an AI economy where only a narrow group of firms can capture returns.
             </p>
           </div>
           <div class="card">
-            <h3>4. Use AI in government carefully</h3>
+            <h3>Use AI in government carefully</h3>
             <p>
-              Public sector AI can speed approvals, service delivery and navigation of regulation. But trust, accountability and clear review pathways are essential.
+              Public sector AI can speed approvals, service delivery and navigation of regulation, but trust, accountability and clear review pathways are essential.
             </p>
           </div>
         </div>
@@ -831,28 +803,24 @@ ul{
     <div class="panel">
       <h3>Final policy reading</h3>
       <p>
-        The most defensible conclusion is that AI can help Australia, but only if adoption broadens beyond pilots and beyond already advantaged firms. The evidence gathered for this site does not support a simple story of either inevitable mass unemployment or automatic prosperity. It supports a more realistic middle position: AI is a meaningful productivity technology whose benefits depend on how institutions, firms and workers adapt around it.
+        The most defensible conclusion is that AI can help Australia, but only if adoption broadens beyond pilots and beyond already advantaged firms. The evidence does not support a simple story of either inevitable mass unemployment or automatic prosperity. It supports a middle position: AI is a meaningful productivity technology whose benefits depend on how institutions, firms and workers adapt around it.
       </p>
     </div>
   </section>
 
   <section id="references" class="page">
     <div class="panel">
-      <h2>Reference notes used in the site</h2>
-      <p>
-        These are the main sources used to populate the measurements, graph captions and interpretation text. You can convert them into your preferred reference style for submission if needed.
-      </p>
+      <h2>References</h2>
       <ul>
-        <li>Productivity Commission, <em>Annual productivity bulletin 2026</em>. Key measurements used: MFP down 0.5% in 2024 to 25, 20 year average 0.4% annual growth, historical 1.6% annual average in 1994 to 95 through 2003 to 04, and the finding that workers in the most productive countries are 12% more productive with the same amount of capital.</li>
-        <li>Australian Bureau of Statistics, <em>AI now fastest growing area for business R&D</em>. Key measurements used: total business R&D \$24.4 billion in 2023 to 24, AI R&D \$668.3 million, AI R&D growth of 142% since 2021 to 22, information and communication services R&D \$5.9 billion, health R&D \$3.673 billion.</li>
-        <li>Australian Government Budget, <em>Productivity</em>. Key measurement used: up to \$70 million in AI Accelerator grants and references to AI use in approvals and regulatory processes.</li>
-        <li>Deloitte Australia, <em>State of AI in the Enterprise 2026</em>. Key measurements used: 61% of Australian companies report improved efficiency, 30% use AI to deeply transform work, 65% of Australian respondents intend to raise AI investment next year versus 84% globally, 12% say generative AI is already transforming their business or industry versus 25% globally.</li>
-        <li>NBER Working Paper 34851, <em>Does Generative AI Narrow Education Based Productivity Gaps? Evidence from a Randomized Experiment</em>. Used for evidence that generative AI can affect productivity dispersion as well as average productivity.</li>
+        <li>Productivity Commission, <em>Annual productivity bulletin 2026</em></li>
+        <li>Australian Bureau of Statistics, <em>AI now fastest growing area for business R&D</em></li>
+        <li>Australian Government Budget, <em>Productivity</em></li>
+        <li>Deloitte Australia, <em>State of AI in the Enterprise 2026</em></li>
+        <li>NBER Working Paper 34851, <em>Does Generative AI Narrow Education Based Productivity Gaps? Evidence from a Randomized Experiment</em></li>
       </ul>
 
       <div class="refs" style="margin-top:16px;">
-        Direct links:
-        <br><a href="[pc.gov.au](https://www.pc.gov.au/ongoing/productivity-insights/bulletins/bulletin-2026/)" target="_blank">[pc.gov.au](https://www.pc.gov.au/ongoing/productivity-insights/bulletins/bulletin-2026/)</a>
+        <a href="[pc.gov.au](https://www.pc.gov.au/ongoing/productivity-insights/bulletins/bulletin-2026/)" target="_blank">[pc.gov.au](https://www.pc.gov.au/ongoing/productivity-insights/bulletins/bulletin-2026/)</a>
         <br><a href="[abs.gov.au](https://www.abs.gov.au/media-centre/media-releases/ai-now-fastest-growing-area-business-rd)" target="_blank">[abs.gov.au](https://www.abs.gov.au/media-centre/media-releases/ai-now-fastest-growing-area-business-rd)</a>
         <br><a href="[budget.gov.au](https://budget.gov.au/content/03-productivity.htm)" target="_blank">[budget.gov.au](https://budget.gov.au/content/03-productivity.htm)</a>
         <br><a href="[deloitte.com](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html)" target="_blank">[deloitte.com](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html)</a>
@@ -861,9 +829,6 @@ ul{
     </div>
   </section>
 
-  <div class="footer-note">
-    Built as a multi page interactive report with measured data, transparent modelling and embedded graph references.
-  </div>
 </main>
 
 <script>
@@ -939,7 +904,6 @@ new Chart(document.getElementById('chartProductivity'), {
   },
   options:{
     ...commonOptions,
-    maintainAspectRatio:false,
     scales:{
       x:{ ticks:{ color:'#c8b8a4' }, grid:{ color:'rgba(255,255,255,0.04)' } },
       y:{
@@ -1016,25 +980,12 @@ new Chart(document.getElementById('chartAustralia'), {
   type:'bar',
   data:{
     labels:['Total business R&D','Info & comms R&D','Health R&D','AI R&D'],
-    datasets:[
-      {
-        type:'bar',
-        label:'AUD billions',
-        data:[24.4,5.9,3.673,0.6683],
-        backgroundColor:['#f2c27b','#d8a45c','#b87a48','#8d573d'],
-        yAxisID:'y'
-      },
-      {
-        type:'line',
-        label:'AI R&D in AUD millions',
-        data:[null,null,null,668.3],
-        borderColor:'#f6efe4',
-        backgroundColor:'#f6efe4',
-        tension:0.25,
-        pointRadius:5,
-        yAxisID:'y1'
-      }
-    ]
+    datasets:[{
+      label:'AUD billions',
+      data:[24.4,5.9,3.673,0.6683],
+      backgroundColor:['#f2c27b','#d8a45c','#b87a48','#8d573d'],
+      borderRadius:8
+    }]
   },
   options:{
     ...commonOptions,
@@ -1044,12 +995,6 @@ new Chart(document.getElementById('chartAustralia'), {
         ticks:{ color:'#c8b8a4' },
         grid:{ color:'rgba(255,255,255,0.05)' },
         title:{ display:true, text:'AUD billions', color:'#c8b8a4' }
-      },
-      y1:{
-        position:'right',
-        ticks:{ color:'#f6efe4' },
-        grid:{ drawOnChartArea:false },
-        title:{ display:true, text:'AUD millions', color:'#f6efe4' }
       }
     }
   }
@@ -1091,8 +1036,7 @@ const scenarioData = {
   }
 };
 
-const scenarioCtx = document.getElementById('chartScenario');
-const scenarioChart = new Chart(scenarioCtx, {
+const scenarioChart = new Chart(document.getElementById('chartScenario'), {
   type:'line',
   data:{
     labels:['2024','2025','2026','2027','2028','2029','2030'],
@@ -1148,10 +1092,6 @@ function setScenario(name){
 
 scenarioButtons.forEach(btn => {
   btn.addEventListener('click', () => setScenario(btn.dataset.scenario));
-});
-
-document.querySelectorAll('.chart-wrap canvas').forEach(c => {
-  c.style.height = '320px';
 });
 
 setScenario('baseline');
