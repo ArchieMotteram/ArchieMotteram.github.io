@@ -1,293 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI & the Australian Economy</title>
-
-<style>
-:root{
-  --bg:#0b0f14;
-  --panel:#111824;
-  --soft:#1a2433;
-  --accent:#ff8a2a;
-  --accent2:#ffb15e;
-  --text:#f4efe9;
-  --muted:#b9b2a8;
-}
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(255,138,42,0.12), transparent 40%),
-    linear-gradient(180deg, #070a0f, #0e141d);
-  color:var(--text);
-}
-
-/* ===== HERO ===== */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:0 10%;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,0.75), rgba(0,0,0,0.2)),
-    url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819') center/cover;
-}
-
-.hero h1{
-  font-size:3.5rem;
-  margin:0;
-  color:var(--accent);
-}
-
-.hero p{
-  max-width:700px;
-  color:var(--muted);
-  line-height:1.6;
-  margin-top:15px;
-}
-
-/* ===== NAV ===== */
-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:240px;
-  height:100vh;
-  background:rgba(10,15,20,0.9);
-  padding:30px 20px;
-}
-
-nav h2{
-  color:var(--accent);
-  font-size:1.2rem;
-  margin-bottom:20px;
-}
-
-nav a{
-  display:block;
-  color:var(--muted);
-  margin:12px 0;
-  text-decoration:none;
-}
-
-nav a:hover{
-  color:var(--accent);
-}
-
-/* ===== MAIN ===== */
-main{
-  margin-left:260px;
-  padding:60px;
-}
-
-/* ===== SECTIONS ===== */
-section{
-  margin-bottom:80px;
-}
-
-h2{
-  color:var(--accent);
-  font-size:2rem;
-}
-
-/* ===== CARDS ===== */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:linear-gradient(145deg, var(--panel), var(--soft));
-  padding:20px;
-  border-radius:16px;
-  border:1px solid rgba(255,138,42,0.15);
-}
-
-.card h3{
-  color:var(--accent2);
-  margin-top:0;
-}
-
-/* ===== SCENARIOS ===== */
-.buttons{
-  display:flex;
-  gap:10px;
-  margin:20px 0;
-}
-
-button{
-  background:var(--soft);
-  border:1px solid rgba(255,138,42,0.3);
-  color:var(--text);
-  padding:10px 14px;
-  cursor:pointer;
-  border-radius:10px;
-}
-
-button.active{
-  background:var(--accent);
-  color:black;
-}
-
-/* ===== BARS ===== */
-.bar{
-  margin:12px 0;
-}
-
-.bar-label{
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-}
-
-.bar-track{
-  height:10px;
-  background:#1a2433;
-  border-radius:20px;
-}
-
-.bar-fill{
-  height:10px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  border-radius:20px;
-}
-
-/* ===== SMALL TEXT ===== */
-.small{
-  color:var(--muted);
-  line-height:1.6;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <nav>
-<h2>AI ECONOMY</h2>
-<a href="#thesis">Thesis</a>
-<a href="#channels">Economic Channels</a>
-<a href="#industries">Industries</a>
-<a href="#scenario">Scenarios</a>
-<a href="#policy">Policy</a>
+<a href="index.html">Thesis</a>
+<a href="gpt.html">AI as GPT</a>
+<a href="channels.html">Channels</a>
+<a href="industries.html">Industries</a>
+<a href="scenarios.html">Scenarios</a>
+<a href="policy.html">Policy</a>
 </nav>
 
-<div class="hero">
-<h1>AI & the Australian Economy</h1>
+<div class="container">
+
+<div class="window">
+<h1>AI & Australian Economy</h1>
+
 <p>
-A forecast of how artificial intelligence will reshape productivity, work,
-and inequality in Australia by 2030.
+By 2030, artificial intelligence will become one of the most important economic technologies in Australia.
+Its primary effect is not full automation, but task-level transformation of work.
 </p>
-</div>
 
-<main>
-
-<section id="thesis">
-<h2>Thesis</h2>
-<p class="small">
-By 2030, AI is likely to lift Australian productivity mainly through task automation and augmentation.
-However, without strong diffusion and policy, gains will be uneven,
-benefiting high-skill workers and large firms more than others.
+<p>
+Australia’s key constraint is weak productivity growth. AI may reverse this trend by lowering the cost of cognitive labour in a service-based economy.
 </p>
-</section>
 
-<section id="channels">
-<h2>Economic Channels</h2>
-
-<div class="grid">
-<div class="card">
-<h3>Productivity</h3>
-<p class="small">AI reduces time spent on routine cognitive work.</p>
-</div>
-
-<div class="card">
-<h3>Augmentation</h3>
-<p class="small">Workers become more productive rather than replaced.</p>
-</div>
-
-<div class="card">
-<h3>Innovation</h3>
-<p class="small">Lower cost of experimentation and prototyping.</p>
-</div>
-
-<div class="card">
-<h3>Concentration</h3>
-<p class="small">Large firms gain disproportionate advantages.</p>
-</div>
-</div>
-</section>
-
-<section id="industries">
-<h2>Industry Exposure</h2>
-
-<div class="bar"><div class="bar-label"><span>Professional Services</span><span>High</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
-
-<div class="bar"><div class="bar-label"><span>Healthcare</span><span>Medium-High</span></div><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
-
-<div class="bar"><div class="bar-label"><span>Education</span><span>Medium</span></div><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div></div>
-
-<div class="bar"><div class="bar-label"><span>Finance</span><span>High</span></div><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
-
-</section>
-
-<section id="scenario">
-<h2>Scenario Explorer</h2>
-
-<div class="buttons">
-<button class="active" onclick="setScenario('baseline',this)">Baseline</button>
-<button onclick="setScenario('upside',this)">Upside</button>
-<button onclick="setScenario('downside',this)">Downside</button>
-</div>
-
-<div class="card">
-<p id="scenarioText">
-AI adoption rises steadily but unevenly. Productivity improves modestly.
+<p>
+However, the gains are likely to be uneven. High-skill workers and large firms benefit most due to complementary capital, data, and organisational capacity.
 </p>
-</div>
-</section>
 
-<section id="policy">
-<h2>Policy</h2>
-
-<div class="grid">
-<div class="card">
-<h3>Skills</h3>
-<p class="small">Lifelong learning and workforce transition support.</p>
 </div>
 
-<div class="card">
-<h3>Diffusion</h3>
-<p class="small">Support SMEs to adopt AI tools effectively.</p>
 </div>
-
-<div class="card">
-<h3>Competition</h3>
-<p class="small">Prevent excessive concentration of market power.</p>
-</div>
-</div>
-</section>
-
-</main>
-
-<script>
-const scenarios = {
-baseline:"AI spreads gradually. Productivity rises moderately. Inequality increases slightly.",
-upside:"Strong diffusion leads to broad productivity gains and shared wage growth.",
-downside:"Large firms dominate AI gains. SMEs lag. Inequality increases sharply."
-};
-
-function setScenario(name,btn){
-document.getElementById("scenarioText").innerText = scenarios[name];
-document.querySelectorAll("button").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-}
-</script>
 
 </body>
 </html>
