@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">Thesis</a>
+<a href="gpt.html">AI as GPT</a>
+<a href="channels.html">Channels</a>
+<a href="industries.html">Industries</a>
+<a href="scenarios.html">Scenarios</a>
+<a href="policy.html">Policy</a>
+</nav>
+
+<div class="container">
+
+<div class="window">
+<h2>Economic Channels</h2>
+
+<p>
+AI affects the economy through four main channels: productivity, labour augmentation, innovation, and market concentration.
+</p>
+
+<div class="chart">
+<canvas id="chart1"></canvas>
+</div>
+
+</div>
+
+</div>
+
+<script>
+new Chart(document.getElementById("chart1"),{
+type:"bar",
+data:{
+labels:["Productivity","Augmentation","Innovation","Concentration"],
+datasets:[{
+label:"Impact Strength",
+data:[85,80,75,70],
+backgroundColor:"#ff8a2a"
+}]
+}
+});
+</script>
+
+</body>
+</html>
