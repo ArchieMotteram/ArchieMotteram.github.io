@@ -9,17 +9,13 @@
 
 <style>
 
-/* =========================
-JAZZ BAR THEME
-========================= */
-
 body{
   margin:0;
   font-family:Arial;
   background:
-    radial-gradient(circle at 20% 10%, rgba(255,140,60,0.12), transparent 45%),
-    radial-gradient(circle at 80% 20%, rgba(255,180,90,0.08), transparent 50%),
-    linear-gradient(180deg,#070a0f,#0e141d);
+    radial-gradient(circle at 15% 10%, rgba(255,140,60,0.16), transparent 55%),
+    radial-gradient(circle at 85% 20%, rgba(255,180,100,0.10), transparent 60%),
+    linear-gradient(180deg,#06080c,#0e141d);
   color:#f4efe9;
 }
 
@@ -29,66 +25,61 @@ nav{
   top:0;
   left:0;
   right:0;
-  background:rgba(10,15,20,0.85);
+  background:rgba(10,15,20,0.88);
   backdrop-filter: blur(12px);
   padding:14px;
   display:flex;
-  gap:18px;
-  border-bottom:1px solid rgba(255,138,42,0.2);
+  gap:16px;
   z-index:100;
+  border-bottom:1px solid rgba(255,138,42,0.25);
 }
 
 nav a{
   color:#b9b2a8;
   text-decoration:none;
   font-size:14px;
-  transition:0.3s;
   cursor:pointer;
 }
 
-nav a:hover{
-  color:#ff8a2a;
-}
+nav a:hover{color:#ff8a2a}
 
-/* PAGE SYSTEM */
+/* PAGES */
 .page{
   display:none;
-  padding:100px 20px 60px;
-  max-width:1000px;
+  padding:110px 22px 70px;
+  max-width:1100px;
   margin:auto;
-  animation:fade 0.6s ease;
+  animation:fade 0.5s ease;
 }
 
-.page.active{
-  display:block;
-}
+.page.active{display:block}
 
 @keyframes fade{
   from{opacity:0; transform:translateY(12px);}
   to{opacity:1; transform:translateY(0);}
 }
 
-/* WINDOWS */
-.window{
+/* PANELS */
+.panel{
   background:linear-gradient(145deg,#121a26,#0f1622);
-  border:1px solid rgba(255,138,42,0.15);
-  padding:26px;
-  border-radius:16px;
+  border:1px solid rgba(255,138,42,0.16);
+  padding:28px;
+  border-radius:18px;
   margin-bottom:22px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.35);
+  box-shadow:0 12px 40px rgba(0,0,0,0.35);
 }
 
-h1,h2{
-  color:#ff8a2a;
-  margin-top:0;
-}
+h1,h2{color:#ff8a2a}
+h3{color:#ffb15e}
 
 p{
   color:#c7c0b6;
-  line-height:1.8;
+  line-height:1.85;
 }
 
-/* GRID CARDS */
+.small{color:#b9b2a8}
+
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -97,31 +88,32 @@ p{
 
 .card{
   background:#0f1622;
-  padding:18px;
-  border-radius:12px;
   border:1px solid rgba(255,138,42,0.12);
-}
-
-.card h3{
-  color:#ffb15e;
-}
-
-/* CHART BOX */
-.chartBox{
-  background:#0c121c;
   padding:16px;
   border-radius:12px;
-  margin-top:15px;
 }
 
-/* SMALL TEXT */
-.small{
-  color:#b9b2a8;
+/* BUTTONS */
+button{
+  background:#0f1622;
+  border:1px solid rgba(255,138,42,0.3);
+  color:#f4efe9;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
 }
 
-/* SCENE TRANSITION FEEL */
-.page{
-  transition:opacity 0.4s ease;
+button.active{
+  background:#ff8a2a;
+  color:black;
+}
+
+/* CHART */
+.chartBox{
+  background:#0b111b;
+  padding:14px;
+  border-radius:12px;
+  margin-top:14px;
 }
 
 </style>
@@ -131,37 +123,50 @@ p{
 
 <nav>
 <a onclick="go('thesis')">Thesis</a>
-<a onclick="go('gpt')">GPT Role</a>
-<a onclick="go('channels')">Economic Channels</a>
+<a onclick="go('gpt')">GPT</a>
+<a onclick="go('channels')">Channels</a>
 <a onclick="go('industries')">Industries</a>
+<a onclick="go('australia')">Australia</a>
 <a onclick="go('scenarios')">Scenarios</a>
 </nav>
 
 <!-- ================= THESIS ================= -->
 <div id="thesis" class="page active">
 
-<div class="window">
-<h1>AI & the Australian Economy</h1>
+<div class="panel">
+<h1>AI & the Australian Economy (2030 Forecast)</h1>
 
 <p>
-By 2030, artificial intelligence will reshape Australia’s economy primarily through task transformation rather than full job replacement.
-It reduces the cost of cognitive labour across a service-based economy.
+By 2030, artificial intelligence is likely to become one of the most important economic technologies adopted in Australia since the spread of the internet and business software
+(Brynjolfsson and McAfee 2014).
 </p>
 
 <p>
-Australia’s productivity growth has been weak for years. AI presents a potential uplift through automation, augmentation, and workflow redesign.
+Its impact will come less from mass job displacement and more from the transformation of cognitive tasks such as drafting, forecasting, coding, classification and decision support
+(Agrawal, Gans and Goldfarb 2018; Crafts 2021).
 </p>
 
 <p>
-However, the benefits will be uneven — concentrated in high-skill workers and large firms unless diffusion is broad.
+This reflects a reduction in the cost of information processing across a highly service-based economy where knowledge work dominates output (OECD 2023).
+</p>
+
+<p>
+Australia’s productivity growth has been weak for over a decade, limiting wage growth and living standards (Productivity Commission 2024).
+AI offers a potential uplift through automation and augmentation of labour.
+</p>
+
+<p>
+However, these gains are unlikely to be evenly distributed. High-skill workers and large firms are better positioned to benefit, raising concerns about inequality (Autor 2015; Acemoglu and Restrepo 2018).
 </p>
 
 </div>
 
-<div class="window">
-<h2>Key Insight</h2>
-<p class="small">
-AI is not a labour replacement shock — it is a productivity reconfiguration shock.
+<div class="panel">
+<h2>Core Argument</h2>
+<p>
+AI will increase productivity primarily through augmentation and workflow redesign rather than mass unemployment,
+but without strong policy intervention it risks deepening inequality across workers and firms
+(Productivity Commission 2024).
 </p>
 </div>
 
@@ -170,27 +175,35 @@ AI is not a labour replacement shock — it is a productivity reconfiguration sh
 <!-- ================= GPT ================= -->
 <div id="gpt" class="page">
 
-<div class="window">
+<div class="panel">
 <h2>AI as a General-Purpose Technology</h2>
 
 <p>
-AI behaves like electricity or computing — a general-purpose technology that spreads across industries and improves over time.
+AI fits the definition of a general-purpose technology (GPT): a technology that is widely applicable, improves over time, and enables complementary innovations across the economy
+(Bresnahan and Trajtenberg 1995).
 </p>
 
 <p>
-Its economic impact depends on complementary changes: training, workflow redesign, and organisational adoption.
+Historical examples include electricity and computing. These technologies did not immediately increase productivity; instead, gains emerged as firms reorganised production systems around them
+(Crafts 2021).
 </p>
 
 <p>
-In service economies like Australia, AI reduces the cost of information-heavy work: law, finance, healthcare, education, and government.
+In Australia, AI is especially relevant because the economy is service-dominated. Many jobs involve information processing, communication and coordination tasks.
+</p>
+
+<p>
+Large language models reduce the cost of producing text, analysis and code, while machine learning improves prediction and classification tasks across industries
+(Agrawal, Gans and Goldfarb 2018).
 </p>
 
 </div>
 
-<div class="window">
-<h2>Why It Matters</h2>
-<p class="small">
-Historical GPTs only deliver productivity gains when firms reorganise around them — not when they are merely adopted.
+<div class="panel">
+<h2>Key Insight</h2>
+<p>
+The productivity impact of AI depends not on adoption alone, but on organisational restructuring and complementary investments such as training and data infrastructure
+(Productivity Commission 2024).
 </p>
 </div>
 
@@ -199,16 +212,51 @@ Historical GPTs only deliver productivity gains when firms reorganise around the
 <!-- ================= CHANNELS ================= -->
 <div id="channels" class="page">
 
-<div class="window">
-<h2>Economic Channels</h2>
+<div class="panel">
+<h2>Economic Transmission Channels</h2>
 
 <p>
-AI affects the economy through multiple reinforcing mechanisms:
-productivity, augmentation, innovation, and concentration effects.
+AI affects the economy through four major channels identified in economic literature:
 </p>
 
+<div class="grid">
+
+<div class="card">
+<h3>Productivity Channel</h3>
+<p class="small">
+AI reduces time spent on routine cognitive tasks such as drafting, summarising and administrative processing,
+raising output per worker (Crafts 2021).
+</p>
+</div>
+
+<div class="card">
+<h3>Labour Augmentation</h3>
+<p class="small">
+Most jobs are task bundles. AI substitutes for some tasks while complementing others,
+reshaping jobs rather than eliminating them (Autor 2015).
+</p>
+</div>
+
+<div class="card">
+<h3>Innovation Channel</h3>
+<p class="small">
+AI reduces the cost of experimentation and prototyping, increasing innovation capacity across firms
+(Agrawal, Gans and Goldfarb 2018).
+</p>
+</div>
+
+<div class="card">
+<h3>Concentration Channel</h3>
+<p class="small">
+Firms with data and capital advantages adopt AI faster, potentially increasing market concentration
+(Acemoglu and Restrepo 2018).
+</p>
+</div>
+
+</div>
+
 <div class="chartBox">
-<canvas id="chart1"></canvas>
+<canvas id="c1"></canvas>
 </div>
 
 </div>
@@ -218,40 +266,77 @@ productivity, augmentation, innovation, and concentration effects.
 <!-- ================= INDUSTRIES ================= -->
 <div id="industries" class="page">
 
-<div class="window">
+<div class="panel">
 <h2>Industry Impacts</h2>
 
 <p>
-Different sectors face different exposure depending on how information-intensive their work is.
+AI exposure depends on task composition and information intensity across sectors.
 </p>
 
 <div class="grid">
 
 <div class="card">
 <h3>Professional Services</h3>
-<p class="small">High exposure due to drafting, analysis, and research automation.</p>
+<p class="small">
+High exposure due to reliance on analysis, drafting and knowledge work.
+Junior roles may be most affected as routine tasks are automated (Autor 2015).
+</p>
 </div>
 
 <div class="card">
 <h3>Healthcare</h3>
-<p class="small">Augmentation of clinicians through diagnostics + admin support.</p>
+<p class="small">
+AI supports clinicians through diagnostics, triage and administrative tasks,
+improving efficiency under rising demand pressures (AIHW 2024; Topol 2019).
+</p>
 </div>
 
 <div class="card">
 <h3>Education</h3>
-<p class="small">Efficiency gains but unequal student access risks.</p>
+<p class="small">
+AI improves teaching efficiency and content delivery but may widen inequality in student outcomes depending on access (OECD 2023).
+</p>
 </div>
 
 <div class="card">
-<h3>Finance & Government</h3>
-<p class="small">Automation of compliance, forecasting, and service delivery.</p>
+<h3>Government & Finance</h3>
+<p class="small">
+AI improves forecasting, compliance and service delivery,
+increasing state capacity and efficiency (Productivity Commission 2024).
+</p>
 </div>
 
 </div>
 
 <div class="chartBox">
-<canvas id="chart2"></canvas>
+<canvas id="c2"></canvas>
 </div>
+
+</div>
+
+</div>
+
+<!-- ================= AUSTRALIA ================= -->
+<div id="australia" class="page">
+
+<div class="panel">
+<h2>Why Australia Is Especially Exposed</h2>
+
+<p>
+Australia is a highly service-based economy, meaning a large share of employment is in information-intensive sectors where AI has strong applicability (OECD 2023).
+</p>
+
+<p>
+At the same time, Australia has experienced prolonged weak productivity growth, which constrains wage growth and fiscal capacity (Productivity Commission 2024).
+</p>
+
+<p>
+This creates a dual outcome: high potential productivity gains, but also significant distributional risk.
+</p>
+
+<p>
+The central constraint is not invention but diffusion — whether AI spreads across firms, sectors and skill levels (Crafts 2021).
+</p>
 
 </div>
 
@@ -260,15 +345,19 @@ Different sectors face different exposure depending on how information-intensive
 <!-- ================= SCENARIOS ================= -->
 <div id="scenarios" class="page">
 
-<div class="window">
-<h2>2030 Scenario Forecast</h2>
+<div class="panel">
+<h2>Scenario Analysis (2030)</h2>
+
+<button class="active" onclick="setScenario('baseline',this)">Baseline</button>
+<button onclick="setScenario('upside',this)">Upside</button>
+<button onclick="setScenario('downside',this)">Downside</button>
 
 <p id="scenarioText">
-Baseline scenario: moderate productivity growth with uneven distribution.
+Baseline: moderate productivity gains with uneven diffusion and slight increase in inequality.
 </p>
 
 <div class="chartBox">
-<canvas id="chart3"></canvas>
+<canvas id="c3"></canvas>
 </div>
 
 </div>
@@ -277,61 +366,53 @@ Baseline scenario: moderate productivity growth with uneven distribution.
 
 <script>
 
-/* ======================
-PAGE SWITCH (SMOOTH SPA)
-====================== */
-function go(page){
-
-document.querySelectorAll(".page").forEach(p=>{
-p.classList.remove("active");
-});
-
-document.getElementById(page).classList.add("active");
-
+/* NAV */
+function go(id){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 }
 
-/* ======================
-CHART 1 - ECONOMIC CHANNELS
-====================== */
-new Chart(document.getElementById("chart1"),{
+/* CHARTS */
+new Chart(document.getElementById("c1"),{
 type:"bar",
 data:{
 labels:["Productivity","Augmentation","Innovation","Concentration"],
-datasets:[{
-data:[85,80,75,70],
-backgroundColor:"#ff8a2a"
-}]
+datasets:[{data:[90,85,80,75],backgroundColor:"#ff8a2a"}]
 }
 });
 
-/* ======================
-CHART 2 - INDUSTRIES
-====================== */
-new Chart(document.getElementById("chart2"),{
+new Chart(document.getElementById("c2"),{
 type:"bar",
 data:{
-labels:["Prof Services","Finance","Healthcare","Education","Gov"],
-datasets:[{
-data:[90,85,75,60,70],
-backgroundColor:"#ff8a2a"
-}]
+labels:["Prof Services","Healthcare","Education","Gov"],
+datasets:[{data:[95,80,65,85],backgroundColor:"#ff8a2a"}]
 }
 });
 
-/* ======================
-CHART 3 - SCENARIOS
-====================== */
-new Chart(document.getElementById("chart3"),{
+new Chart(document.getElementById("c3"),{
 type:"line",
 data:{
 labels:["2024","2025","2026","2027","2028","2029","2030"],
 datasets:[{
-data:[1,1.2,1.4,1.7,2.0,2.3,2.6],
+data:[1,1.15,1.35,1.6,1.9,2.2,2.55],
 borderColor:"#ff8a2a",
-tension:0.3
+tension:0.35
 }]
 }
 });
+
+/* SCENARIOS */
+const scenarios={
+baseline:"Baseline: steady adoption, moderate productivity gains, slight inequality increase.",
+upside:"Upside: strong diffusion, high productivity growth, broadly shared gains.",
+downside:"Downside: concentrated adoption, weak diffusion, rising inequality."
+};
+
+function setScenario(type,btn){
+document.getElementById("scenarioText").innerText=scenarios[type];
+document.querySelectorAll("button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+}
 
 </script>
 
