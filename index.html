@@ -5,205 +5,350 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>AI and the Australian Economy</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b1020;
-  color: #eaf0ff;
-  line-height: 1.6;
+:root{
+  --bg:#070A12;
+  --panel:rgba(255,255,255,0.06);
+  --panel2:rgba(255,255,255,0.09);
+  --text:#EAF0FF;
+  --muted:#A9B4D0;
+  --accent:#6EA8FE;
+  --good:#3EF0A8;
+  --warn:#FFCC66;
+  --bad:#FF6B6B;
+  --border:rgba(255,255,255,0.12);
 }
 
-header {
-  padding: 80px 20px;
-  text-align: center;
-  background: #121a30;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter, sans-serif;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+body{
+  background: radial-gradient(circle at top, #111a33, var(--bg));
+  color:var(--text);
+  line-height:1.6;
 }
 
-nav {
-  position: sticky;
-  top: 0;
-  background: #0f1730;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px;
-  border-bottom: 1px solid #2b3b67;
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  backdrop-filter: blur(12px);
+  background: rgba(10,15,30,0.6);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  padding:14px;
+  z-index:10;
 }
 
-nav a {
-  color: #a8b3cf;
-  text-decoration: none;
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:500;
+  transition:0.2s;
 }
 
-nav a:hover {
-  color: white;
+nav a:hover{
+  color:var(--text);
 }
 
-section {
-  max-width: 900px;
-  margin: auto;
-  padding: 60px 20px;
+/* HERO */
+header{
+  text-align:center;
+  padding:120px 20px 80px;
+  max-width:900px;
+  margin:auto;
 }
 
-h2 {
-  color: #6ea8fe;
+h1{
+  font-size:3.2rem;
+  letter-spacing:-1px;
 }
 
-.card {
-  background: #121a30;
-  padding: 20px;
-  border-radius: 12px;
-  margin-top: 15px;
-  border: 1px solid #2b3b67;
+.subtitle{
+  margin-top:15px;
+  color:var(--muted);
+  font-size:1.1rem;
 }
 
-button {
-  padding: 10px 15px;
-  margin: 5px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #1c2745;
-  color: white;
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:18px;
+  margin-top:40px;
 }
 
-button.active {
-  background: #6ea8fe;
-  color: black;
+/* CARDS */
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+  transition:0.25s;
+  backdrop-filter: blur(10px);
 }
 
-.metric {
-  font-size: 1.2rem;
-  margin: 10px 0;
+.card:hover{
+  transform: translateY(-5px);
+  background:var(--panel2);
 }
 
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #a8b3cf;
+.card h3{
+  color:var(--accent);
+  margin-bottom:10px;
 }
+
+/* SECTIONS */
+section{
+  max-width:1000px;
+  margin:auto;
+  padding:70px 20px;
+}
+
+h2{
+  font-size:2rem;
+  margin-bottom:15px;
+  letter-spacing:-0.5px;
+}
+
+p{
+  color:var(--muted);
+}
+
+/* SCENARIO BUTTONS */
+.buttons{
+  display:flex;
+  gap:10px;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+button{
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text);
+  cursor:pointer;
+  transition:0.2s;
+}
+
+button:hover{
+  background:var(--panel);
+}
+
+button.active{
+  background:var(--accent);
+  color:#08101f;
+  font-weight:600;
+}
+
+/* METRICS */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.metric{
+  padding:18px;
+  border-radius:16px;
+  background:var(--panel);
+  border:1px solid var(--border);
+}
+
+.metric span{
+  font-size:1.4rem;
+  font-weight:700;
+  color:var(--accent);
+}
+
+/* ANIMATION */
+.fade{
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:60px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  margin-top:40px;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>AI and the Australian Economy</h1>
-  <p>Productivity boom or inequality deepener? A forecast to 2030.</p>
-</header>
-
 <nav>
   <a href="#thesis">Thesis</a>
-  <a href="#channels">Economic Channels</a>
+  <a href="#channels">Channels</a>
   <a href="#industry">Industry</a>
   <a href="#scenario">Scenarios</a>
   <a href="#policy">Policy</a>
 </nav>
 
-<!-- THESIS -->
+<header>
+  <h1>AI & the Australian Economy</h1>
+  <p class="subtitle">
+    A 2030 forecast of productivity growth, labour transformation, and inequality dynamics.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Core Insight</h3>
+      <p>AI increases productivity through task automation and augmentation.</p>
+    </div>
+    <div class="card">
+      <h3>Key Risk</h3>
+      <p>Benefits may concentrate among high-skill workers and large firms.</p>
+    </div>
+    <div class="card">
+      <h3>Policy Issue</h3>
+      <p>Diffusion of AI across SMEs and public institutions determines outcomes.</p>
+    </div>
+  </div>
+</header>
+
 <section id="thesis">
   <h2>Thesis</h2>
-  <div class="card">
+  <div class="card fade">
     <p>
-      By 2030, AI will likely raise productivity in Australia through task automation and augmentation rather than mass job replacement. However, without strong diffusion and policy support, the gains will be uneven and concentrated among high-skill workers and large firms.
+      By 2030, AI will raise productivity in Australia primarily through task augmentation rather than mass job replacement.
+      However, without strong diffusion, skills investment, and competition policy, gains will be uneven and concentrated.
     </p>
   </div>
 </section>
 
-<!-- CHANNELS -->
 <section id="channels">
   <h2>Economic Channels</h2>
 
-  <div class="card">
-    <p><b>1. Productivity:</b> Faster drafting, coding, analysis, and reporting.</p>
-    <p><b>2. Augmentation:</b> AI improves worker output rather than replacing roles.</p>
-    <p><b>3. Innovation:</b> Lower cost of experimentation for firms and startups.</p>
-    <p><b>4. Concentration:</b> Large firms gain more due to data and systems.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Productivity</h3>
+      <p>Automation of drafting, coding, and administrative tasks increases output per worker.</p>
+    </div>
+    <div class="card">
+      <h3>Augmentation</h3>
+      <p>AI complements skilled labour, increasing efficiency rather than replacing roles.</p>
+    </div>
+    <div class="card">
+      <h3>Innovation</h3>
+      <p>Lower experimentation costs accelerate startups and product development.</p>
+    </div>
+    <div class="card">
+      <h3>Concentration</h3>
+      <p>Large firms gain disproportionate advantage through data and infrastructure.</p>
+    </div>
   </div>
 </section>
 
-<!-- INDUSTRY -->
 <section id="industry">
   <h2>Industry Impacts</h2>
 
-  <div class="card">
-    <p><b>Professional Services:</b> High exposure, workflow redesign</p>
-    <p><b>Healthcare:</b> Strong augmentation, admin reduction</p>
-    <p><b>Education:</b> Personalised learning + admin support</p>
-    <p><b>Finance:</b> Efficiency + risk modelling improvements</p>
-    <p><b>Government:</b> Faster service delivery if adoption succeeds</p>
+  <div class="grid">
+    <div class="card"><h3>Professional Services</h3><p>High exposure, workflow redesign</p></div>
+    <div class="card"><h3>Healthcare</h3><p>Augmentation + efficiency gains</p></div>
+    <div class="card"><h3>Education</h3><p>Personalisation + admin reduction</p></div>
+    <div class="card"><h3>Finance</h3><p>Risk + efficiency improvements</p></div>
+    <div class="card"><h3>Government</h3><p>Service delivery acceleration</p></div>
   </div>
 </section>
 
-<!-- SCENARIOS -->
 <section id="scenario">
   <h2>Scenario Explorer</h2>
 
-  <button onclick="setScenario('baseline', this)" class="active">Baseline</button>
-  <button onclick="setScenario('upside', this)">Upside</button>
-  <button onclick="setScenario('downside', this)">Downside</button>
+  <div class="buttons">
+    <button class="active" onclick="setScenario('baseline', this)">Baseline</button>
+    <button onclick="setScenario('upside', this)">Upside</button>
+    <button onclick="setScenario('downside', this)">Downside</button>
+  </div>
 
-  <div class="card">
-    <p class="metric"><b>Productivity:</b> <span id="prod">Moderate</span></p>
-    <p class="metric"><b>Employment:</b> <span id="emp">Stable</span></p>
-    <p class="metric"><b>Inequality:</b> <span id="ineq">Medium</span></p>
+  <div class="metrics fade">
+    <div class="metric">Productivity<br><span id="p">Moderate</span></div>
+    <div class="metric">Employment<br><span id="e">Stable</span></div>
+    <div class="metric">Inequality<br><span id="i">Medium</span></div>
+  </div>
+
+  <div class="card fade" style="margin-top:15px;">
     <p id="desc">
-      AI adoption grows steadily but unevenly, with gains concentrated in large firms.
+      AI adoption grows steadily but unevenly, with gains concentrated in large firms and skilled workers.
     </p>
   </div>
 </section>
 
-<!-- POLICY -->
 <section id="policy">
-  <h2>Policy Response</h2>
+  <h2>Policy Playbook</h2>
 
-  <div class="card">
-    <p><b>Skills:</b> Lifelong learning and workforce transition programs</p>
-    <p><b>Diffusion:</b> Support SMEs to adopt AI tools</p>
-    <p><b>Competition:</b> Prevent market concentration</p>
-    <p><b>Government role:</b> Public sector as early adopter</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Skills</h3>
+      <p>Lifelong learning and task-based retraining systems.</p>
+    </div>
+    <div class="card">
+      <h3>Diffusion</h3>
+      <p>Support SMEs in adopting AI tools effectively.</p>
+    </div>
+    <div class="card">
+      <h3>Competition</h3>
+      <p>Prevent excessive market concentration in AI adoption.</p>
+    </div>
+    <div class="card">
+      <h3>Government</h3>
+      <p>Public sector as early adopter and productivity benchmark.</p>
+    </div>
   </div>
 </section>
 
 <footer>
-  <p>ECON1626 Interactive Forecast | AI and Australian Economy</p>
+  ECON1626 | AI Economic Forecast Project | 2030 Scenario Analysis
 </footer>
 
 <script>
-const scenarios = {
+const data = {
   baseline: {
-    prod: "Moderate",
-    emp: "Stable",
-    ineq: "Medium",
-    desc: "AI adoption grows steadily but unevenly. Productivity improves modestly, but gains are concentrated in high-skill sectors and large firms."
+    p:"Moderate",
+    e:"Stable",
+    i:"Medium",
+    d:"AI improves productivity steadily but unevenly across sectors."
   },
   upside: {
-    prod: "High",
-    emp: "Adaptive growth",
-    ineq: "Low",
-    desc: "Broad diffusion of AI leads to strong productivity growth and shared gains across workers and firms."
+    p:"High",
+    e:"Adaptive growth",
+    i:"Low",
+    d:"Broad diffusion leads to strong productivity growth and inclusive gains."
   },
   downside: {
-    prod: "Uneven",
-    emp: "Disrupted",
-    ineq: "High",
-    desc: "AI benefits concentrate in large firms, increasing inequality and weakening entry-level job pathways."
+    p:"Uneven",
+    e:"Disrupted",
+    i:"High",
+    d:"Benefits concentrate in large firms, increasing inequality."
   }
 };
 
-function setScenario(name, btn) {
-  document.getElementById("prod").innerText = scenarios[name].prod;
-  document.getElementById("emp").innerText = scenarios[name].emp;
-  document.getElementById("ineq").innerText = scenarios[name].ineq;
-  document.getElementById("desc").innerText = scenarios[name].desc;
+function setScenario(k, btn){
+  document.getElementById("p").innerText = data[k].p;
+  document.getElementById("e").innerText = data[k].e;
+  document.getElementById("i").innerText = data[k].i;
+  document.getElementById("desc").innerText = data[k].d;
 
-  document.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll("button").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
 }
 </script>
