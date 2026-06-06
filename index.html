@@ -1,6 +1,212 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI and the Australian Economy</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1020;
+  color: #eaf0ff;
+  line-height: 1.6;
+}
+
+header {
+  padding: 80px 20px;
+  text-align: center;
+  background: #121a30;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background: #0f1730;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #2b3b67;
+}
+
+nav a {
+  color: #a8b3cf;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: white;
+}
+
+section {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+h2 {
+  color: #6ea8fe;
+}
+
+.card {
+  background: #121a30;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 15px;
+  border: 1px solid #2b3b67;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #1c2745;
+  color: white;
+}
+
+button.active {
+  background: #6ea8fe;
+  color: black;
+}
+
+.metric {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #a8b3cf;
+}
+</style>
+</head>
+
 <body>
-<h1>GITHUB PAGES TEST</h1>
+
+<header>
+  <h1>AI and the Australian Economy</h1>
+  <p>Productivity boom or inequality deepener? A forecast to 2030.</p>
+</header>
+
+<nav>
+  <a href="#thesis">Thesis</a>
+  <a href="#channels">Economic Channels</a>
+  <a href="#industry">Industry</a>
+  <a href="#scenario">Scenarios</a>
+  <a href="#policy">Policy</a>
+</nav>
+
+<!-- THESIS -->
+<section id="thesis">
+  <h2>Thesis</h2>
+  <div class="card">
+    <p>
+      By 2030, AI will likely raise productivity in Australia through task automation and augmentation rather than mass job replacement. However, without strong diffusion and policy support, the gains will be uneven and concentrated among high-skill workers and large firms.
+    </p>
+  </div>
+</section>
+
+<!-- CHANNELS -->
+<section id="channels">
+  <h2>Economic Channels</h2>
+
+  <div class="card">
+    <p><b>1. Productivity:</b> Faster drafting, coding, analysis, and reporting.</p>
+    <p><b>2. Augmentation:</b> AI improves worker output rather than replacing roles.</p>
+    <p><b>3. Innovation:</b> Lower cost of experimentation for firms and startups.</p>
+    <p><b>4. Concentration:</b> Large firms gain more due to data and systems.</p>
+  </div>
+</section>
+
+<!-- INDUSTRY -->
+<section id="industry">
+  <h2>Industry Impacts</h2>
+
+  <div class="card">
+    <p><b>Professional Services:</b> High exposure, workflow redesign</p>
+    <p><b>Healthcare:</b> Strong augmentation, admin reduction</p>
+    <p><b>Education:</b> Personalised learning + admin support</p>
+    <p><b>Finance:</b> Efficiency + risk modelling improvements</p>
+    <p><b>Government:</b> Faster service delivery if adoption succeeds</p>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section id="scenario">
+  <h2>Scenario Explorer</h2>
+
+  <button onclick="setScenario('baseline', this)" class="active">Baseline</button>
+  <button onclick="setScenario('upside', this)">Upside</button>
+  <button onclick="setScenario('downside', this)">Downside</button>
+
+  <div class="card">
+    <p class="metric"><b>Productivity:</b> <span id="prod">Moderate</span></p>
+    <p class="metric"><b>Employment:</b> <span id="emp">Stable</span></p>
+    <p class="metric"><b>Inequality:</b> <span id="ineq">Medium</span></p>
+    <p id="desc">
+      AI adoption grows steadily but unevenly, with gains concentrated in large firms.
+    </p>
+  </div>
+</section>
+
+<!-- POLICY -->
+<section id="policy">
+  <h2>Policy Response</h2>
+
+  <div class="card">
+    <p><b>Skills:</b> Lifelong learning and workforce transition programs</p>
+    <p><b>Diffusion:</b> Support SMEs to adopt AI tools</p>
+    <p><b>Competition:</b> Prevent market concentration</p>
+    <p><b>Government role:</b> Public sector as early adopter</p>
+  </div>
+</section>
+
+<footer>
+  <p>ECON1626 Interactive Forecast | AI and Australian Economy</p>
+</footer>
+
+<script>
+const scenarios = {
+  baseline: {
+    prod: "Moderate",
+    emp: "Stable",
+    ineq: "Medium",
+    desc: "AI adoption grows steadily but unevenly. Productivity improves modestly, but gains are concentrated in high-skill sectors and large firms."
+  },
+  upside: {
+    prod: "High",
+    emp: "Adaptive growth",
+    ineq: "Low",
+    desc: "Broad diffusion of AI leads to strong productivity growth and shared gains across workers and firms."
+  },
+  downside: {
+    prod: "Uneven",
+    emp: "Disrupted",
+    ineq: "High",
+    desc: "AI benefits concentrate in large firms, increasing inequality and weakening entry-level job pathways."
+  }
+};
+
+function setScenario(name, btn) {
+  document.getElementById("prod").innerText = scenarios[name].prod;
+  document.getElementById("emp").innerText = scenarios[name].emp;
+  document.getElementById("ineq").innerText = scenarios[name].ineq;
+  document.getElementById("desc").innerText = scenarios[name].desc;
+
+  document.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
+</script>
+
 </body>
 </html>
